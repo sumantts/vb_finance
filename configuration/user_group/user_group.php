@@ -1,0 +1,138 @@
+<?php 
+include('common/header_dt.php');  
+if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin");}
+?>
+
+<body>
+    <!-- Begin page -->
+    <div class="wrapper">
+
+        
+        <!-- ========== Topbar Start ========== -->
+        <?php include('common/top_bar.php'); ?>
+        <!-- ========== Topbar End ========== -->
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <?php include('common/left_menu.php'); ?>      
+        <!-- ========== Left Sidebar End ========== -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">EziDesk</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                                        <li class="breadcrumb-item active">Data Tables</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title"><?=$title?></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title --> 
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body"> 
+                                    <!-- end nav-->
+                                    <div class="tab-content">
+                                        <div class="tab-pane show active" id="buttons-table-preview">
+                                            <table id="datatable-buttons" class="table table-sm dt-responsive nowrap w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>SL#</th>
+                                                        <th>Group Name</th>
+                                                        <th>Group Description</th>  
+                                                        <th>Admin</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody> 
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end preview-->
+                                        
+                                        
+                                        <!-- end preview code-->
+                                    </div> <!-- end tab-content-->
+
+                                </div> <!-- end card body-->
+                            </div> <!-- end card -->
+                        </div><!-- end col-->
+                    </div> <!-- end row-->
+                    
+                </div> <!-- container -->
+
+            </div> <!-- content -->
+
+            <!-- Footer Start -->
+            <?php include('common/footer.php'); ?>     
+            <!-- end Footer -->
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Theme Settings Right Panel -->     
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="theme-settings-offcanvas">
+        <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
+            <h5 class="text-white m-0"><?=$title?></h5>
+            <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body p-0">
+            <div data-simplebar class="h-100">
+                <div class="card mb-0 p-3">
+                    <h5 class="mt-0 font-16 fw-bold mb-3">All the(*) Fields are Required</h5>
+                    <div class="row">
+                        <div class="col-12">                            
+                            <form id="myForm" name="myForm" onsubmit="return validateForm()">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label text-danger">Category Name*</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label text-danger">Menu Access List*</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <small id="emailHelp" class="d-none form-text text-muted">Data saved successfully</small>   
+                                </div>                             
+                                    <button type="submit" class="btn btn-primary" id="submitForm">Submit</button>
+                            </form>
+                        </div> 
+                    </div>  
+                </div>
+            </div>
+        </div>         
+    </div>  
+    <!-- Theme Settings Right Panel -->
+
+    <!-- Footer JS Start -->
+    <?php include('common/footer_js_dt.php'); ?>        
+    <!-- end Footer JS -->
+    
+    <script src="configuration/user_group/function.js?d=<?=date('Ymdhis')?>"></script>
+
+</body> 
+</html>
