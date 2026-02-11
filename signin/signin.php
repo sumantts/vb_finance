@@ -99,10 +99,10 @@
         <!-- Auth fluid right content -->
         <div class="auth-fluid-right text-center">
             <div class="auth-user-testimonial">
-                <h2 class="mb-3">SONKUPI FOREST RESORT</h2>
-                <p class="lead"><i class="mdi mdi-format-quote-open"></i> Tune in to the serene rhythm of nature...<i class="mdi mdi-format-quote-close"></i>
+                <h2 class="mb-3">VB Finance</h2>
+                <p class="lead"><i class="mdi mdi-format-quote-open"></i> From Records to Reliability<i class="mdi mdi-format-quote-close"></i>
                 </p>
-                <p> - EziDesk</p>
+                <p> - Vikash</p>
             </div> <!-- end auth-user-testimonial-->
         </div>
         <!-- end Auth fluid right content -->
