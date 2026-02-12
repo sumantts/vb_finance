@@ -1,5 +1,5 @@
 <?php
-	include('assets/php/sql_conn.php');	
+	include('./assets/php/sql_conn.php');	
 	
 	if(isset($_GET["p"])){
 		$p = $_GET["p"];
@@ -23,18 +23,27 @@
 		case 'dashboard':
         $title = "Dashboard";
 		include('dashboard/dashboard.php');
-		break;
-
-		case 'user-group':
-        $title = "User Group";
-		include('configuration/user_group/user_group.php');
-		break;
-
-		case 'user-details':
-        $title = "User Details";
-		include('configuration/user_details/user_details.php');
-		break; 
+		break;   
 		
+		case 'student-feedback':
+		$title = "Student's Feedback";
+		include('student_feedback/student_feedback.php');
+		break;  
+		
+		case 'teachers-feedback':
+		$title = "Teachers' Feedback";
+		include('teachers_feedback/teachers_feedback.php');
+		break;		
+
+		case 'employers-feedback':
+    	$title = "Employers’ Feedback";
+		include('employers_feedback/employers_feedback.php');
+		break;	
+
+		case 'alumni-feedback':
+    	$title = "Alumni Feedback";
+		include('alumni_feedback/alumni_feedback.php');
+		break;
 						
 		default:
 		include('signin/signin.php');

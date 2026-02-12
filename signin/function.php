@@ -1,5 +1,6 @@
 <?php
 	include('../assets/php/sql_conn.php');
+	
 	$fn = '';
 	if(isset($_POST["fn"])){
 	$fn = $_POST["fn"];
@@ -11,45 +12,33 @@
 		$emailaddress = $_POST["emailaddress"];
 		$password = $_POST["password"];
 		$status = true;
-		$message = ''; 	
-		$UsrId = 0;
-		$UsrGrpId = 0;
-		$UsrNm = '';
+		$message = ''; 
+		$login_id = 0;
+		$username = '';
+	
+		$sql = "SELECT * FROM login WHERE username = '".$emailaddress."' && password = '".$password."'";
+		$result = $con->query($sql);
 
-		$query = "CALL usp_LogIn('".$emailaddress."', '".$password."')";
-		mysqli_multi_query($con, $query);
-		do {
-			/* store the result set in PHP */
-			if ($result = mysqli_store_result($con)) {
-				$status = true;
-				$message = 'Username or password match';
-				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-					//printf("%s\n", $row[0]);
-					$UsrId = $row['UsrId'];
-					$UsrGrpId = $row['UsrGrpId']; 
-					$UsrNm = $row['UsrNm']; 
-					
-					$_SESSION['UsrId'] = $UsrId;
-					$_SESSION['UsrGrpId'] = $UsrGrpId;
-					$_SESSION['UsrNm'] = $UsrNm;
-				}
-			}
-			/* print divider */
-			if (mysqli_more_results($con)) {
-				//printf("-----------------\n");
-			}
-		} while (mysqli_next_result($con));
+		if ($result->num_rows > 0) {	
+			$row = $result->fetch_array();
+			$login_id = $row['login_id'];			
+			$username = $row['username'];
+		} else {
+			$status = false;
+		}
+		$con->close();				
 		
-		if($UsrId > 0){
-
+		
+		if($login_id > 0){
+			$_SESSION["username"] = $username;
+			$_SESSION["login_id"] = $login_id;
 		}else{
 			$status = false;
 			$message = 'Wrong Username or Password'; 	
 		}//end if
 
 		$return_result['status'] = $status;
-		$return_result['message'] = $message;
-		//sleep(2);
+		$return_result['message'] = $message; 
 		echo json_encode($return_result);
 	}//end function doLogin
 	
@@ -65,7 +54,7 @@
 		$status = true;			
 		
 		$sql = "UPDATE login SET profile_name = '" .$profile_name. "', username = '".$username."', password = '".$password."' WHERE login_id = '" .$login_id. "'";
-		$result = $mysqli->query($sql);
+		$result = $con->query($sql);
 
 		//Update Author Table
 		if($author_photo != ''){
@@ -73,10 +62,10 @@
 		}else{
 			$sql1 = "UPDATE author_details SET author_name = '" .$profile_name. "', email = '".$username."' WHERE author_id = '" .$author_id. "'";
 		}
-		$result1 = $mysqli->query($sql1);
+		$result1 = $con->query($sql1);
 
 		$ststus = true;
-		//$mysqli->close();
+		//$con->close();
 
 		$return_result['status'] = $status;
 		//sleep(2);

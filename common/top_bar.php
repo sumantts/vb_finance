@@ -7,20 +7,20 @@
                         <!-- Logo light -->
                         <a href="?p=dashboard" class="logo-light">
                             <span class="logo-lg">
-                                <img src="assets/images/logo-sm.png" alt="logo">
+                                <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="logo">
                             </span>
                             <span class="logo-sm">
-                                <img src="assets/images/logo-sm.png" alt="small logo 1">
+                                <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="small logo 1">
                             </span>
                         </a>
 
                         <!-- Logo Dark -->
                         <a href="?p=dashboard" class="logo-dark">
                             <span class="logo-lg">
-                                <img src="assets/images/logo-sm.png" alt="dark logo">
+                                <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="dark logo">
                             </span>
                             <span class="logo-sm">
-                                <img src="assets/images/logo-sm.png" alt="small logo 2" style="height: 50px;">
+                                <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="small logo 2" style="height: 50px;">
                             </span>
                         </a>
                     </div>
@@ -356,7 +356,7 @@
                                 <img src="assets/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle">
                             </span>
                             <span class="d-lg-flex flex-column gap-1 d-none">
-                                <h5 class="my-0"><?=$_SESSION['UsrNm']?></h5>
+                                <h5 class="my-0"><?=$_SESSION['username']?></h5>
                                 <!-- <h6 class="my-0 fw-normal">Founder</h6> -->
                             </span>
                         </a>

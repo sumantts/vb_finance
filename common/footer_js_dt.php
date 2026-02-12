@@ -36,3 +36,14 @@
 
     <!-- Wizard Form Demo js -->
     <script src="assets/js/pages/demo.form-wizard.js"></script>
+
+    <script>
+        $('#cancelForm').on('click', function(){
+            $('#myForm').trigger('reset');
+            $('#serial_no').val('0');
+        })
+        $('#modalCloser').on('click', function(){
+            $('#myForm').trigger('reset');
+            $('#serial_no').val('0');
+        })
+    </script>

@@ -5,8 +5,8 @@
 	session_start();
 	
   	$p_name = 'VB Finance';
-	$logo = 'logo-sm.png';
-	$ico = 'favicon.ico';
+	$logo = 'logo.jpg';
+	$ico = 'logo-mahila.ico';
 
 	//Mysqli DB Connection Procedural style	
 
@@ -15,7 +15,7 @@
 		$host_name = "localhost";
 		$user_name = "root";
 		$password = "";
-		$db_name = "ezidesk";
+		$db_name = "vb_finance";
 	}else{
 		//Server connection
 		$host_name = "localhost";

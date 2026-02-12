@@ -1,6 +1,27 @@
 
 <?php include('common/header.php');  
-if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin");}
+if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=signin");}
+  
+$total_reviews_s = 0;
+$total_reviews_t = 0;
+$total_reviews_e = 0;
+$total_reviews_a = 0;
+
+/*$sql_s = "SELECT * FROM students_feedback";
+$result_s = $con->query($sql_s);
+$total_reviews_s = $result_s->num_rows;
+
+$sql_t = "SELECT * FROM teacher_feedback";
+$result_t = $con->query($sql_t);
+$total_reviews_t = $result_t->num_rows;
+
+$sql_e = "SELECT * FROM employ_feedback";
+$result_e = $con->query($sql_e);
+$total_reviews_e = $result_e->num_rows;
+
+$sql_a = "SELECT * FROM alumni_feedback";
+$result_a = $con->query($sql_a);
+$total_reviews_a = $result_a->num_rows;*/
 
 ?>
 
@@ -50,7 +71,7 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-5 col-lg-6">
+                        <div class="col-xl-12 col-lg-12">
 
                             <div class="row">
                                 <div class="col-sm-6">
@@ -59,11 +80,10 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                                             <div class="float-end">
                                                 <i class="mdi mdi-account-multiple widget-icon"></i>
                                             </div>
-                                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Customers</h5>
-                                            <h3 class="mt-3 mb-3">36,254</h3>
-                                            <p class="mb-0 text-muted">
-                                                <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 5.27%</span>
-                                                <span class="text-nowrap">Since last month</span>
+                                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Total Student's Feedback</h5>
+                                            <h3 class="mt-3 mb-3"></h3>
+                                            <p class="mb-0 text-muted"> 
+                                                <span class="text-nowrap"><?=$total_reviews_s?></span>
                                             </p>
                                         </div> <!-- end card-body-->
                                     </div> <!-- end card-->
@@ -75,11 +95,10 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                                             <div class="float-end">
                                                 <i class="mdi mdi-cart-plus widget-icon"></i>
                                             </div>
-                                            <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Orders</h5>
-                                            <h3 class="mt-3 mb-3">5,543</h3>
-                                            <p class="mb-0 text-muted">
-                                                <span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> 1.08%</span>
-                                                <span class="text-nowrap">Since last month</span>
+                                            <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Total Teachers' Feedback</h5>
+                                            <h3 class="mt-3 mb-3"></h3>
+                                            <p class="mb-0 text-muted"> 
+                                                <span class="text-nowrap"><?=$total_reviews_t?></span>
                                             </p>
                                         </div> <!-- end card-body-->
                                     </div> <!-- end card-->
@@ -93,11 +112,10 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                                             <div class="float-end">
                                                 <i class="mdi mdi-currency-usd widget-icon"></i>
                                             </div>
-                                            <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Revenue</h5>
-                                            <h3 class="mt-3 mb-3">$6,254</h3>
-                                            <p class="mb-0 text-muted">
-                                                <span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> 7.00%</span>
-                                                <span class="text-nowrap">Since last month</span>
+                                            <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Total Employers’ Feedback</h5>
+                                            <h3 class="mt-3 mb-3"></h3>
+                                            <p class="mb-0 text-muted">                                                 
+                                                <span class="text-nowrap"><?=$total_reviews_e?></span>
                                             </p>
                                         </div> <!-- end card-body-->
                                     </div> <!-- end card-->
@@ -109,11 +127,10 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                                             <div class="float-end">
                                                 <i class="mdi mdi-pulse widget-icon"></i>
                                             </div>
-                                            <h5 class="text-muted fw-normal mt-0" title="Growth">Growth</h5>
-                                            <h3 class="mt-3 mb-3">+ 30.56%</h3>
+                                            <h5 class="text-muted fw-normal mt-0" title="Growth">Total Alumni Feedback</h5>
+                                            <h3 class="mt-3 mb-3"></h3>
                                             <p class="mb-0 text-muted">
-                                                <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
-                                                <span class="text-nowrap">Since last month</span>
+                                                <span class="text-nowrap"><?=$total_reviews_a?></span>
                                             </p>
                                         </div> <!-- end card-body-->
                                     </div> <!-- end card-->
@@ -122,7 +139,7 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
 
                         </div> <!-- end col -->
 
-                        <div class="col-xl-7 col-lg-6">
+                        <!-- <div class="col-xl-7 col-lg-6">
                             <div class="card card-h-100">
                                 <div class="d-flex card-header justify-content-between align-items-center">
                                     <h4 class="header-title">Projections Vs Actuals</h4>
@@ -130,14 +147,10 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                                         <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="mdi mdi-dots-vertical"></i>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
-                                            <!-- item-->
-                                            <a href="javascript:void(0);" class="dropdown-item">Profit</a>
-                                            <!-- item-->
+                                        <div class="dropdown-menu dropdown-menu-end"> 
+                                            <a href="javascript:void(0);" class="dropdown-item">Sales Report</a> 
+                                            <a href="javascript:void(0);" class="dropdown-item">Export Report</a> 
+                                            <a href="javascript:void(0);" class="dropdown-item">Profit</a> 
                                             <a href="javascript:void(0);" class="dropdown-item">Action</a>
                                         </div>
                                     </div>
@@ -147,14 +160,15 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                                         <div id="high-performing-product" class="apex-charts" data-colors="#727cf5,#91a6bd40"></div>
                                     </div>
 
-                                </div> <!-- end card-body-->
-                            </div> <!-- end card-->
+                                </div> 
+                            </div> 
 
-                        </div> <!-- end col -->
+                        </div>--> 
+                        <!-- end col -->
                     </div>
                     <!-- end row -->
 
-                    <div class="row">
+                    <div class="row d-none">
                         <div class="col-lg-8">
                             <div class="card">
                                 <div class="d-flex card-header justify-content-between align-items-center">
@@ -273,7 +287,7 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                     </div>
                     <!-- end row -->
 
-                    <div class="row">
+                    <div class="row d-none">
                         <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                             <div class="card">
                                 <div class="d-flex card-header justify-content-between align-items-center">
@@ -430,7 +444,7 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                             </div> <!-- end card-->
                         </div> <!-- end col-->
 
-                        <div class="col-xl-3 col-lg-6 order-lg-1">
+                        <div class="col-xl-3 col-lg-6 order-lg-1 ">
                             <div class="card">
                                 <div class="d-flex card-header justify-content-between align-items-center">
                                     <h4 class="header-title">Recent Activity</h4>

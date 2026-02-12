@@ -1,5 +1,5 @@
 <?php
-	include('../assets/php/sql_conn.php');
+	include('./assets/php/sql_conn.php');
 	$fn = '';
     
 	if(isset($_GET["fn"])){
