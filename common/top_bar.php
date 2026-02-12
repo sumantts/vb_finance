@@ -7,20 +7,20 @@
                         <!-- Logo light -->
                         <a href="?p=dashboard" class="logo-light">
                             <span class="logo-lg">
-                                <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="logo">
+                                <img src="assets/images/<?=$logo?>" alt="logo">
                             </span>
                             <span class="logo-sm">
-                                <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="small logo 1">
+                                <img src="assets/images/<?=$logo?>" alt="small logo 1">
                             </span>
                         </a>
 
                         <!-- Logo Dark -->
                         <a href="?p=dashboard" class="logo-dark">
                             <span class="logo-lg">
-                                <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="dark logo">
+                                <img src="assets/images/<?=$logo?>" alt="dark logo">
                             </span>
                             <span class="logo-sm">
-                                <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="small logo 2" style="height: 50px;">
+                                <img src="assets/images/<?=$logo?>" alt="small logo 2" style="height: 50px;">
                             </span>
                         </a>
                     </div>

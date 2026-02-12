@@ -3,10 +3,10 @@
             <!-- Brand Logo Light -->
             <a href="?p=dashboard" class="logo logo-light">
                 <span class="logo-lg">
-                    <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="logo" style="width: 100%;height: 50px;margin-top: 5px;">
+                    <img src="assets/images/<?=$logo?>" alt="logo" style="width: 100%;height: 50px;margin-top: 5px;">
                 </span>
                 <span class="logo-sm">
-                    <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="small logo">
+                    <img src="assets/images/<?=$logo?>" alt="small logo">
                 </span>
             </a>
 
@@ -15,10 +15,10 @@
             <!-- Brand Logo Dark -->
             <a href="?p=dashboard" class="logo logo-dark">
                 <span class="logo-lg">
-                    <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="dark logo">
+                    <img src="assets/images/<?=$logo?>" alt="dark logo">
                 </span>
                 <span class="logo-sm">
-                    <img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="small logo">
+                    <img src="assets/images/<?=$logo?>" alt="small logo">
                 </span>
             </a>
 
@@ -56,17 +56,15 @@
 
                     <!-- Admin -->
                     <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarFeedback" aria-expanded="false" aria-controls="sidebarFeedback" class="side-nav-link">
+                        <a data-bs-toggle="collapse" href="#sidebarMaster" aria-expanded="false" aria-controls="sidebarMaster" class="side-nav-link">
                             <i class="uil-bright"></i>
-                            <span> Feedback </span>
+                            <span> Master </span>
                             <span class="menu-arrow"></span>
                         </a>
-                        <div class="collapse <?php if($p == 'student-feedback' || $p == 'teachers-feedback' || $p == 'employers-feedback' || $p == 'alumni-feedback'){?>show<?php } ?>" id="sidebarFeedback">
+                        <div class="collapse <?php if($p == 'bank-data' ){?>show<?php } ?>" id="sidebarMaster">
                             <ul class="side-nav-second-level">
-                                <li <?php if($p == 'student-feedback'){?>class="active"<?php } ?>> <a href="?p=student-feedback">Student's Feedback</a> </li>  
-                                <li <?php if($p == 'teachers-feedback'){?>class="active"<?php } ?>> <a href="?p=teachers-feedback">Teachers' Feedback</a> </li>  
-                                <li <?php if($p == 'employers-feedback'){?>class="active"<?php } ?>> <a href="?p=employers-feedback">Employers’ Feedback</a> </li>  
-                                <li <?php if($p == 'alumni-feedback'){?>class="active"<?php } ?>> <a href="?p=alumni-feedback">Alumni Feedback</a> </li> 
+                                <li <?php if($p == 'bank-data'){?>class="active"<?php } ?>> <a href="?p=bank-data">Bank Data</a> </li>  
+                                
                             </ul>
                         </div>
                     </li> 

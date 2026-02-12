@@ -1,5 +1,5 @@
 <?php
-	include('../../assets/php/sql_conn.php');
+	include('../assets/php/sql_conn.php');
 	$fn = '';
     
 	if(isset($_GET["fn"])){
@@ -47,7 +47,7 @@
 		$return_array = array();
 		$status = true;
 		$mainData = array();
-		$sql = "SELECT * FROM students_feedback ORDER BY sf_id DESC";
+		$sql = "SELECT * FROM bank_data ORDER BY b_id DESC";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -55,25 +55,27 @@
 			$slno = 1;
 
 			while($row = $result->fetch_array()){
-				$sf_id = $row['sf_id'];
-				$stdn_name = $row['stdn_name'];
-				$stdn_phone = $row['stdn_phone'];
-				$stdn_age = $row['ans_1'];
-				$stdn_gender = $row['ans_2'];
-				$updated_at = $row['updated_at'];
+				$b_id = $row['b_id'];
+				$trans_date = $row['trans_date'];
+				$narration = $row['narration'];
+				$chq_ref_no = $row['chq_ref_no'];
+				$value_date = $row['value_date'];
+				$withdrawal_amount = $row['withdrawal_amount'];
+				$deposit_amount = $row['deposit_amount'];
 
-				if($sf_id != ''){
+				if($b_id != ''){
 					$action_html = '';
-					$action_html .= '<a data-bs-toggle="offcanvas" href="#theme-settings-offcanvas" class="action-icon" onClick="editTabledata('.$sf_id.')"> <i class="mdi mdi-eye"></i></a>';
-					//$action_html .= '<a href="javascript: void(0);" class="action-icon" onClick="deleteTabledata('.$sf_id.')"> <i class="mdi mdi-delete"></i></a>';
+					$action_html .= '<a data-bs-toggle="offcanvas" href="#theme-settings-offcanvas" class="action-icon" onClick="editTabledata('.$b_id.')"> <i class="mdi mdi-eye"></i></a>';
+					$action_html .= '<a href="javascript: void(0);" class="action-icon" onClick="deleteTabledata('.$b_id.')"> <i class="mdi mdi-delete"></i></a>';
 						
 					$data[0] = $slno; 
-					$data[1] = $stdn_name;
-					$data[2] = $stdn_phone; 
-					$data[3] = $stdn_age;
-					$data[4] = $stdn_gender;
-					$data[5] = date('d-M-Y h:i A', strtotime($updated_at));
-					$data[6] = $action_html;			
+					$data[1] = date('d-m-Y', strtotime($trans_date));
+					$data[2] = $narration; 
+					$data[3] = $chq_ref_no;
+					$data[4] = date('d-m-Y', strtotime($value_date));
+					$data[5] = $withdrawal_amount;
+					$data[6] = $deposit_amount;	
+					//$data[7] = $action_html;				
 					array_push($mainData, $data);
 					$slno++;
 				}

@@ -25,9 +25,9 @@
 		include('dashboard/dashboard.php');
 		break;   
 		
-		case 'student-feedback':
-		$title = "Student's Feedback";
-		include('student_feedback/student_feedback.php');
+		case 'bank-data':
+		$title = "Bank Data";
+		include('bank_data/bank_data.php');
 		break;  
 		
 		case 'teachers-feedback':

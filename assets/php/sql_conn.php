@@ -5,8 +5,9 @@
 	session_start();
 	
   	$p_name = 'VB Finance';
-	$logo = 'logo.jpg';
-	$ico = 'logo-mahila.ico';
+	$logo = 'logo-sm.png';
+	$ico = 'favicon.ico';
+	$tag_line = 'From Records to Reliability';
 
 	//Mysqli DB Connection Procedural style	
 

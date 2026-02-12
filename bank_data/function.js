@@ -7,7 +7,7 @@ $('#myForm').on('submit', function(){
 
     $.ajax({
         type: "POST",
-        url: "teachers_feedback/function.php",
+        url: "bank_data/function.php",
         dataType: "json",
         data: { fn: "saveFormData", itemName: $itemName, unitType: $unitType, itemCategory: $itemCategory, serial_no: $serial_no}
     })
@@ -32,7 +32,7 @@ function populateDataTable(){
     $('#datatable-buttons').DataTable({  
         responsive: true,
         serverMethod: 'GET',
-        ajax: {'url': 'teachers_feedback/function.php?fn=getTableData' },
+        ajax: {'url': 'bank_data/function.php?fn=getTableData' },
         dom: 'Bfrtip' 
     });
 }//end fun
@@ -43,7 +43,7 @@ function deleteTabledata(serial_no){
     if(confirm('Are you sure?')){ 
         $.ajax({
             method: "POST",
-            url: "teachers_feedback/function.php",
+            url: "bank_data/function.php",
             data: { fn: "deleteTableItem", sl_no: serial_no }
         })
         .done(function( res ) {
@@ -61,14 +61,13 @@ function editTabledata(sl){
     console.log('sl: ' + sl);
     $.ajax({
         method: "POST",
-        url: "teachers_feedback/function.php",
+        url: "bank_data/function.php",
         data: { fn: "editTabledata", serial_no: sl }
     })
     .done(function( res ) {
         $res1 = JSON.parse(res); 
         if($res1.status == true){ 
-            $('#welcome_text').html('Feedback Details of ' + $res1.teacher_name);
-
+            $('#welcome_text').html('Feedback Details of ' + $res1.stdn_name);
             $('#ans_1').html('Feedback: '+$res1.ans_1);
             $('#ans_2').html('Feedback: '+$res1.ans_2);
             $('#ans_3').html('Feedback: '+$res1.ans_3);
@@ -91,7 +90,12 @@ function editTabledata(sl){
             $('#ans_20').html('Feedback: '+$res1.ans_20);
             $('#ans_21').html('Feedback: '+$res1.ans_21);
             $('#ans_22').html('Feedback: '+$res1.ans_22);
-            $('#ans_23').html('Feedback: '+$res1.ans_23); 
+            $('#ans_23').html('Feedback: '+$res1.ans_23);
+            $('#ans_24').html('Feedback: '+$res1.ans_24);
+            $('#ans_25').html('Feedback: '+$res1.ans_25);
+            $('#ans_26').html('Feedback: '+$res1.ans_26);
+            $('#ans_27').html('Feedback: '+$res1.ans_27);
+            $('#ans_28').html('Feedback: '+$res1.ans_28); 
              
         }        
     });//end ajax

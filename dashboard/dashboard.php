@@ -80,7 +80,7 @@ $total_reviews_a = $result_a->num_rows;*/
                                             <div class="float-end">
                                                 <i class="mdi mdi-account-multiple widget-icon"></i>
                                             </div>
-                                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Total Student's Feedback</h5>
+                                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Total Customer</h5>
                                             <h3 class="mt-3 mb-3"></h3>
                                             <p class="mb-0 text-muted"> 
                                                 <span class="text-nowrap"><?=$total_reviews_s?></span>
@@ -95,7 +95,7 @@ $total_reviews_a = $result_a->num_rows;*/
                                             <div class="float-end">
                                                 <i class="mdi mdi-cart-plus widget-icon"></i>
                                             </div>
-                                            <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Total Teachers' Feedback</h5>
+                                            <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Total Symbols</h5>
                                             <h3 class="mt-3 mb-3"></h3>
                                             <p class="mb-0 text-muted"> 
                                                 <span class="text-nowrap"><?=$total_reviews_t?></span>
@@ -112,7 +112,7 @@ $total_reviews_a = $result_a->num_rows;*/
                                             <div class="float-end">
                                                 <i class="mdi mdi-currency-usd widget-icon"></i>
                                             </div>
-                                            <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Total Employers’ Feedback</h5>
+                                            <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Total Bank</h5>
                                             <h3 class="mt-3 mb-3"></h3>
                                             <p class="mb-0 text-muted">                                                 
                                                 <span class="text-nowrap"><?=$total_reviews_e?></span>
@@ -127,7 +127,7 @@ $total_reviews_a = $result_a->num_rows;*/
                                             <div class="float-end">
                                                 <i class="mdi mdi-pulse widget-icon"></i>
                                             </div>
-                                            <h5 class="text-muted fw-normal mt-0" title="Growth">Total Alumni Feedback</h5>
+                                            <h5 class="text-muted fw-normal mt-0" title="Growth">Total Payment Gateway</h5>
                                             <h3 class="mt-3 mb-3"></h3>
                                             <p class="mb-0 text-muted">
                                                 <span class="text-nowrap"><?=$total_reviews_a?></span>

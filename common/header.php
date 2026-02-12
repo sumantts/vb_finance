@@ -5,13 +5,13 @@
 <!-- Mirrored from coderthemes.com/hyper_2/saas/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 31 Aug 2024 16:00:55 GMT -->
 <head>
     <meta charset="utf-8" />
-    <title>Dashboard | Gurudas College</title>
+    <title>Dashboard | <?=$p_name?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png">
+    <link rel="shortcut icon" href="assets/images/<?=$logo?>">
 
     <!-- Daterangepicker css -->
     <link href="assets/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">

@@ -5,13 +5,13 @@
 <!-- Mirrored from coderthemes.com/EziDesk_2/saas/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 31 Aug 2024 16:02:40 GMT -->
 <head>
     <meta charset="utf-8" />
-    <title>Log In | Gurudas College </title>
+    <title>Log In | VB Finance </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Feedback Management Panel" name="description" />
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png">
+    <link rel="shortcut icon" href="assets/images/<?=$logo?>">
 
     <!-- Theme Config Js -->
     <script src="assets/js/EziDesk-config.js"></script>
@@ -33,10 +33,10 @@
                 <!-- Logo -->
                 <div class="auth-brand text-center text-lg-start">
                     <a href="#" class="logo-dark">
-                        <span><img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="dark logo" style="width: 100%;height: 70px;"></span>
+                        <span><img src="assets/images/<?=$logo?>" alt="dark logo" style="width: 100%;height: 70px;"></span>
                     </a>
                     <a href="#" class="logo-light">
-                        <span><img src="https://gurudascollege.edu.in/wp-content/themes/gurudas/assets/images/logo.png" alt="logo"  style="width: 100%;height: 70px;"></span>
+                        <span><img src="assets/images/<?=$logo?>" alt="logo"  style="width: 100%;height: 70px;"></span>
                     </a>
                 </div>
 
@@ -99,7 +99,7 @@
         <!-- Auth fluid right content -->
         <div class="auth-fluid-right text-center">
             <div class="auth-user-testimonial">
-                <h2 class="mb-3">Gurudas College Feedback Management Panel</h2>
+                <h2 class="mb-3"><?=$tag_line?></h2>
                 <!-- <p class="lead"><i class="mdi mdi-format-quote-open"></i> Tune in to the serene rhythm of nature...<i class="mdi mdi-format-quote-close"></i> -->
                 </p>
                 <!-- <p> - EziDesk</p> -->
