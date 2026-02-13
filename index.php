@@ -23,6 +23,11 @@
 		case 'dashboard':
         $title = "Dashboard";
 		include('dashboard/dashboard.php');
+		break; 
+
+		case 'category':
+        $title = "Category";
+		include('category/category.php');
 		break;   
 		
 		case 'bank-data':

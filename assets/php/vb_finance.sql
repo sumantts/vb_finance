@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2026 at 06:41 PM
+-- Generation Time: Feb 13, 2026 at 08:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -59,6 +59,26 @@ INSERT INTO `bank_data` (`b_id`, `trans_date`, `narration`, `chq_ref_no`, `value
 (15, '2026-02-07', 'POS 403875XXXXXX7099 FUNTAIL ENTERPRI', '0000603817576539', '2026-02-07', 156.00, 0.00),
 (16, '2026-02-08', 'DC INTL POS TXN DCC+ST 230126-EPR2603973253832', 'EPR2603973253832', '2026-02-08', 20.01, 0.00),
 (17, '2026-02-09', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1246057932', 'AXISCN1246057932', '2026-02-09', 0.00, 1250.50);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `c_id` int(11) NOT NULL,
+  `category_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`c_id`, `category_name`) VALUES
+(1, 'Bank Statement'),
+(2, 'Payment Gateway Statement'),
+(3, 'Mini Statement');
 
 -- --------------------------------------------------------
 
@@ -133,6 +153,12 @@ ALTER TABLE `bank_data`
   ADD PRIMARY KEY (`b_id`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`c_id`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -153,6 +179,12 @@ ALTER TABLE `sales_data`
 --
 ALTER TABLE `bank_data`
   MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `login`
