@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2026 at 06:46 PM
+-- Generation Time: Feb 13, 2026 at 06:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -115,6 +115,14 @@ CREATE TABLE `sales_data` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `sales_data`
+--
+
+INSERT INTO `sales_data` (`sa_id`, `client_name`, `address`, `state`, `pin_code`, `contact_no`, `pan_number`, `email_id`, `kyc_verified`, `plan_subscribed`, `date_of_subscription`, `transaction_id`, `plan_duration_month`, `subscription_end_date`, `pay_made_tax_amt`, `igst`, `cgst`, `sgst`, `total_gst`, `total_payment`, `invoice_number`, `payment_gateway`, `hsh_code`, `gateway_charges`, `gst_on_charges`, `total_charges`) VALUES
+(1, 'vikash', '121, gt road', 'westbengal', '711202', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'MEGA OPTIONS', '0000-00-00', '1234567890', 3, '0000-00-00', 1000.00, 0.00, 90.00, 90.00, 180.00, 1180.00, 'VB/25-26/WEB/228', 'RAZORPAY', '997156', 25.37, 4.57, 29.94),
+(2, 'atanu', '124/6161a.road', 'UTTAR PRADESH', '123456', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'EQUITY', '0000-00-00', '456789654', 1, '0000-00-00', 2000.00, 360.00, 90.00, 90.00, 360.00, 2360.00, 'VB/25-26/WEB/228', 'RAZORPAY', '', 0.00, 0.00, 0.00);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -156,7 +164,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `sales_data`
 --
 ALTER TABLE `sales_data`
-  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

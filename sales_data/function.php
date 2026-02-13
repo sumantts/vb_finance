@@ -47,7 +47,7 @@
 		$return_array = array();
 		$status = true;
 		$mainData = array();
-		$sql = "SELECT * FROM sales_data ORDER BY b_id DESC";
+		$sql = "SELECT * FROM sales_data ORDER BY sa_id DESC";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -55,27 +55,70 @@
 			$slno = 1;
 
 			while($row = $result->fetch_array()){
-				$b_id = $row['b_id'];
-				$trans_date = $row['trans_date'];
-				$narration = $row['narration'];
-				$chq_ref_no = $row['chq_ref_no'];
-				$value_date = $row['value_date'];
-				$withdrawal_amount = $row['withdrawal_amount'];
-				$deposit_amount = $row['deposit_amount'];
+				$sa_id = $row['sa_id'];
+				$client_name = $row['client_name'];
+				$address = $row['address'];
+				$state = $row['state'];
+				$pin_code = $row['pin_code'];
+				$contact_no = $row['contact_no'];
+				$pan_number = $row['pan_number'];
+				$email_id = $row['email_id'];
+				
+				$kyc_verified = $row['kyc_verified'];
+				$plan_subscribed = $row['plan_subscribed'];
+				$date_of_subscription = $row['date_of_subscription'];
+				$transaction_id = $row['transaction_id'];
+				$plan_duration_month = $row['plan_duration_month'];
+				$subscription_end_date = $row['subscription_end_date'];
+				$pay_made_tax_amt = $row['pay_made_tax_amt'];
+				$igst = $row['igst'];
+				$cgst = $row['cgst'];
+				$sgst = $row['sgst'];
+				
+				$total_gst = $row['total_gst'];
+				$total_payment = $row['total_payment'];
+				$invoice_number = $row['invoice_number'];
+				$payment_gateway = $row['payment_gateway'];
+				$hsh_code = $row['hsh_code'];
+				$gateway_charges = $row['gateway_charges'];
+				$gst_on_charges = $row['gst_on_charges'];
+				$total_charges = $row['total_charges']; 
 
-				if($b_id != ''){
+				if($sa_id != ''){
 					$action_html = '';
-					$action_html .= '<a data-bs-toggle="offcanvas" href="#theme-settings-offcanvas" class="action-icon" onClick="editTabledata('.$b_id.')"> <i class="mdi mdi-eye"></i></a>';
-					$action_html .= '<a href="javascript: void(0);" class="action-icon" onClick="deleteTabledata('.$b_id.')"> <i class="mdi mdi-delete"></i></a>';
+					$action_html .= '<a data-bs-toggle="offcanvas" href="#theme-settings-offcanvas" class="action-icon" onClick="editTabledata('.$sa_id.')"> <i class="mdi mdi-eye"></i></a>';
+					$action_html .= '<a href="javascript: void(0);" class="action-icon" onClick="deleteTabledata('.$sa_id.')"> <i class="mdi mdi-delete"></i></a>';
 						
 					$data[0] = $slno; 
-					$data[1] = date('d-m-Y', strtotime($trans_date));
-					$data[2] = $narration; 
-					$data[3] = $chq_ref_no;
-					$data[4] = date('d-m-Y', strtotime($value_date));
-					$data[5] = $withdrawal_amount;
-					$data[6] = $deposit_amount;	
-					//$data[7] = $action_html;				
+					$data[1] = $client_name;
+					$data[2] = $address; 
+					$data[3] = $state;
+					$data[4] = $pin_code;
+					$data[5] = $contact_no;
+					$data[6] = $pan_number;	
+					$data[7] = $email_id;
+
+					$data[8] = $kyc_verified;	
+					$data[9] = $plan_subscribed;	
+					$data[10] = $date_of_subscription;	
+					$data[11] = $transaction_id;	
+					$data[12] = $plan_duration_month;	
+					$data[13] = $subscription_end_date;	
+					$data[14] = $pay_made_tax_amt;	
+					$data[15] = $igst;	
+					$data[16] = $cgst;	
+					$data[17] = $sgst;
+
+					$data[18] = $total_gst;	
+					$data[19] = $total_payment;	
+					$data[20] = $invoice_number;	
+					$data[21] = $payment_gateway;	
+					$data[22] = $hsh_code;	
+					$data[23] = $gateway_charges;	
+					$data[24] = $gst_on_charges;	
+					$data[25] = $total_charges;	
+					//$data[26] = $action_html; 
+
 					array_push($mainData, $data);
 					$slno++;
 				}

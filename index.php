@@ -28,22 +28,13 @@
 		case 'bank-data':
 		$title = "Bank Data";
 		include('bank_data/bank_data.php');
-		break;  
+		break; 
 		
-		case 'teachers-feedback':
-		$title = "Teachers' Feedback";
-		include('teachers_feedback/teachers_feedback.php');
-		break;		
-
-		case 'employers-feedback':
-    	$title = "Employers’ Feedback";
-		include('employers_feedback/employers_feedback.php');
-		break;	
-
-		case 'alumni-feedback':
-    	$title = "Alumni Feedback";
-		include('alumni_feedback/alumni_feedback.php');
-		break;
+		case 'sales-data':
+		$title = "Sales Data";
+		include('sales_data/sales_data.php');
+		break; 
+		
 						
 		default:
 		include('signin/signin.php');

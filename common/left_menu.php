@@ -61,10 +61,10 @@
                             <span> Master </span>
                             <span class="menu-arrow"></span>
                         </a>
-                        <div class="collapse <?php if($p == 'bank-data' ){?>show<?php } ?>" id="sidebarMaster">
+                        <div class="collapse <?php if($p == 'bank-data' || $p == 'sales-data'){?>show<?php } ?>" id="sidebarMaster">
                             <ul class="side-nav-second-level">
-                                <li <?php if($p == 'bank-data'){?>class="active"<?php } ?>> <a href="?p=bank-data">Bank Data</a> </li>  
-                                
+                                <li <?php if($p == 'bank-data'){?>class="active"<?php } ?>> <a href="?p=bank-data">Bank Data</a> </li>
+                                <li <?php if($p == 'sales-data'){?>class="active"<?php } ?>> <a href="?p=sales-data">Sales Data</a> </li>                                  
                             </ul>
                         </div>
                     </li> 

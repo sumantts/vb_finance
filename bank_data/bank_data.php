@@ -113,8 +113,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
 
         <div class="offcanvas-body p-0">
             <div data-simplebar class="h-100">
-                <div class="card mb-0 p-3">
-                    <h5 class="mt-0 font-16 fw-bold mb-3" id="welcome_text">Feedback Details of </h5>
+                <div class="card mb-0 p-3"> 
                     <div class="row">
                         <div class="col-12">                            
                             <form id="myForm2" name="myForm2" action="bank_data/bank_csv_importer.php" method="post" enctype="multipart/form-data">

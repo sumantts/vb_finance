@@ -64,12 +64,33 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                                 <thead>
                                                     <tr>
                                                         <th>SL#</th>
-                                                        <th>Date</th>
-                                                        <th>Narration</th>  
-                                                        <th>Chq./Ref. No</th>  
-                                                        <th>Value Date</th>  
-                                                        <th>Withdrawal Amt.</th>
-                                                        <th>Deposit Amt.</th>
+                                                        <th>Client Name</th>
+                                                        <th>Address</th>  
+                                                        <th>State</th>  
+                                                        <th>Pincode</th>  
+                                                        <th>Contact No</th>
+                                                        <th>PAN Number</th>  
+                                                        <th>Email ID</th>  
+                                                         
+                                                        <th>KYC Verified</th>  
+                                                        <th>Plan Subscribed</th>  
+                                                        <th>Date of Subscription</th>  
+                                                        <th>Transaction ID</th>  
+                                                        <th>Plan Duration (Months)</th>  
+                                                        <th>Subscription End Date</th>  
+                                                        <th>Payment Made Taxable Amount</th>  
+                                                        <th>IGST</th>  
+                                                        <th>CGST</th>  
+                                                        <th>SGST</th>  
+                                                         
+                                                        <th>Total GST</th>  
+                                                        <th>Total Payment</th>  
+                                                        <th>Invoice Number</th>  
+                                                        <th>Payment Gateway</th>  
+                                                        <th>HSH Code</th>  
+                                                        <th>Gateway Charges</th>  
+                                                        <th>GST on Charges</th>  
+                                                        <th>Total Charges</th>   
                                                         <!-- <th>Action</th> -->
                                                     </tr>
                                                 </thead>
@@ -113,8 +134,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
 
         <div class="offcanvas-body p-0">
             <div data-simplebar class="h-100">
-                <div class="card mb-0 p-3">
-                    <h5 class="mt-0 font-16 fw-bold mb-3" id="welcome_text">Feedback Details of </h5>
+                <div class="card mb-0 p-3"> 
                     <div class="row">
                         <div class="col-12">                            
                             <form id="myForm2" name="myForm2" action="sales_data/sales_csv_importer.php" method="post" enctype="multipart/form-data">
