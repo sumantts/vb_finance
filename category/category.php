@@ -1,6 +1,6 @@
 <?php 
 include('common/header_dt.php');  
-if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin");}
+if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=signin");}
 ?>
 
 <body>
@@ -49,6 +49,11 @@ if(!$_SESSION['UsrId'] || $_SESSION['UsrId'] == ''){header("location: ?p=signin"
                             <div class="card">
                                 <div class="card-body"> 
                                     <!-- end nav-->
+                                     <div class="alert alert-primary alert-dismissible text-bg-primary border-0 fade show " role="alert1" id="alert_div">
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        <span id="alert_span"></span>
+                                    </div>
+
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="buttons-table-preview">
                                             <table id="datatable-buttons" class="table table-sm dt-responsive nowrap w-100">

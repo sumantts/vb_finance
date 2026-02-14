@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2026 at 08:00 PM
+-- Generation Time: Feb 14, 2026 at 06:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -70,15 +70,6 @@ CREATE TABLE `category` (
   `c_id` int(11) NOT NULL,
   `category_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`c_id`, `category_name`) VALUES
-(1, 'Bank Statement'),
-(2, 'Payment Gateway Statement'),
-(3, 'Mini Statement');
 
 -- --------------------------------------------------------
 
@@ -184,7 +175,7 @@ ALTER TABLE `bank_data`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `login`

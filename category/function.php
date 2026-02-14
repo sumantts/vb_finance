@@ -100,6 +100,19 @@
 		$return_array['category_name'] = $category_name;
     	echo json_encode($return_array);
 	}//function end
+			
+	//Delete Table Data
+	if($fn == 'deleteTabledata'){
+		$return_array = array();
+		$status = true; 
+		$serial_no = $_POST['serial_no']; 
+		
+		$sql = "DELETE FROM category WHERE c_id = '" .$serial_no. "' ";
+		$result = $con->query($sql); 
+
+		$return_array['status'] = $status; 
+    	echo json_encode($return_array);
+	}//function end
 
 	//Get User Group
 	if($fn == 'configureUserGroupDropDown'){

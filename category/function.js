@@ -66,6 +66,32 @@ function editTabledata(sl){
     });//end ajax
 }//end if 
 
+function deleteTabledata(sl){
+    console.log('sl: ' + sl);
+    if(confirm('Are you sure to delete the record?')){
+        $.ajax({
+            method: "POST",
+            url: "category/function.php",
+            data: { fn: "deleteTabledata", serial_no: sl }
+        })
+        .done(function( res ) {
+            $res1 = JSON.parse(res); 
+            if($res1.status == true){ 
+                $msg_text = 'Data Deleted successfully';
+                showNotification($msg_text)
+                populateDataTable(); 
+            }        
+        });//end ajax
+    }//end fonfirm if
+}//end if 
+
+function showNotification($msg_text){
+    $('#alert_div').removeClass('d-none');
+    $('#alert_div').addClass('d-block');
+
+    $('#alert_span').html($msg_text);
+}//end fun
+
 //Service
 /*****
 function configureUserGroupDropDown(){
