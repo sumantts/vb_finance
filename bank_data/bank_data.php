@@ -1,5 +1,5 @@
 <?php 
-include('common/header_dt.php');  
+include('common/header_dt1.php');  
 if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=signin");}
 ?>
 
@@ -60,22 +60,24 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                      </div> -->
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="buttons-table-preview">
-                                            <table id="datatable-buttons" class="table table-sm dt-responsive nowrap w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th>SL#</th>
-                                                        <th>Date</th>
-                                                        <th>Narration</th>  
-                                                        <th>Chq./Ref. No</th>  
-                                                        <th>Value Date</th>  
-                                                        <th>Withdrawal Amt.</th>
-                                                        <th>Deposit Amt.</th>
-                                                        <!-- <th>Action</th> -->
-                                                    </tr>
-                                                </thead>
-                                                <tbody> 
-                                                </tbody>
-                                            </table>
+                                            <div class="table-responsive">
+                                                <table id="datatable-buttons" class="table dt-responsive nowrap w-100">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>SL#</th>
+                                                            <th>Date</th>
+                                                            <th>Narration</th>  
+                                                            <th>Chq./Ref. No</th>  
+                                                            <th>Value Date</th>  
+                                                            <th>Withdrawal Amt.</th>
+                                                            <th>Deposit Amt.</th> 
+                                                            <!-- <th>Action</th> -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody> 
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div> <!-- end preview-->
                                         
                                         
@@ -140,7 +142,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
     <!-- Theme Settings Right Panel -->
 
     <!-- Footer JS Start -->
-    <?php include('common/footer_js_dt.php'); ?>        
+    <?php include('common/footer_js_dt1.php'); ?>        
     <!-- end Footer JS -->
     
     <script src="bank_data/function.js?d=<?=date('Ymdhis')?>"></script>

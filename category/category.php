@@ -1,5 +1,5 @@
 <?php 
-include('common/header_dt.php');  
+include('common/header_dt1.php');  
 if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=signin");}
 ?>
 
@@ -32,9 +32,8 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                             <div class="page-title-box">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">EziDesk</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                        <li class="breadcrumb-item active">Data Tables</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Master</a></li>
+                                        <li class="breadcrumb-item active"><?=$title?></li>
                                     </ol>
                                 </div>
                                 <h4 class="page-title"><?=$title?></h4>
@@ -48,11 +47,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body"> 
-                                    <!-- end nav-->
-                                     <div class="alert alert-primary alert-dismissible text-bg-primary border-0 fade show " role="alert1" id="alert_div">
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        <span id="alert_span"></span>
-                                    </div>
+                                    <!-- end nav--> 
 
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="buttons-table-preview">
@@ -60,6 +55,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                                 <thead>
                                                     <tr>
                                                         <th>SL#</th>
+                                                        <th>Parent Category Name</th> 
                                                         <th>Category Name</th> 
                                                         <th>Action</th>
                                                     </tr>
@@ -113,6 +109,11 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                     <label for="category_name" class="form-label text-danger">Category Name*</label>
                                     <input type="text" class="form-control" id="category_name" name="category_name" aria-describedby="category_name" required>
                                 </div> 
+                                <div class="mb-3">
+                                    <label for="parent_c_id" class="form-label">Parent Category Name</label>
+                                    <select class="form-select" id="parent_c_id" name="parent_c_id" aria-describedby="parent_c_id">
+                                    </select>
+                                </div> 
                                 
                                 <div class="mb-3">
                                     <small id="message_text" class="d-none form-text text-muted"> </small>   
@@ -130,7 +131,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
     <!-- Theme Settings Right Panel -->
 
     <!-- Footer JS Start -->
-    <?php include('common/footer_js_dt.php'); ?>        
+    <?php include('common/footer_js_dt1.php'); ?>        
     <!-- end Footer JS -->
     
     <script src="category/function.js?d=<?=date('Ymdhis')?>"></script>

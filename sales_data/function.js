@@ -26,10 +26,10 @@ $('#myForm').on('submit', function(){
 }) //end fun
 
 function populateDataTable(){ 
-    $('#datatable-buttons').dataTable().fnClearTable();
-    $('#datatable-buttons').dataTable().fnDestroy();
+    $('#scroll-horizontal-datatable').dataTable().fnClearTable();
+    $('#scroll-horizontal-datatable').dataTable().fnDestroy();
 
-    $('#datatable-buttons').DataTable({  
+    $('#scroll-horizontal-datatable').DataTable({  
         responsive: true,
         serverMethod: 'GET',
         ajax: {'url': 'sales_data/function.php?fn=getTableData' },
