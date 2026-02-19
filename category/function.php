@@ -128,13 +128,45 @@
     	echo json_encode($return_array);
 	}//function end
 
-	//Get User Group
+	//Get Category Group
 	if($fn == 'configureParentCategoryDd'){
 		$return_array = array();
 		$status = true;
 		$mainData = array();
 		
 		$sql = "SELECT * FROM category WHERE parent_c_id = '0'";
+		$result = $con->query($sql);
+
+		if ($result->num_rows > 0) {
+			$status = true;
+			$slno = 1;
+
+			while($row = $result->fetch_array()){
+				$c_id = $row['c_id'];
+				$parent_c_id = $row['parent_c_id'];
+				$category_name = $row['category_name'];
+
+				$data_obj = new stdClass();
+				$data_obj->c_id = $c_id;
+				$data_obj->parent_c_id = $parent_c_id;
+				$data_obj->category_name = $category_name;
+				array_push($mainData, $data_obj);
+			}
+		}
+
+		$return_array['status'] = $status;
+		$return_array['data'] = $mainData;
+    	echo json_encode($return_array);
+	}//function end
+
+	
+	if($fn == 'configureSubCategoryDd'){
+	    $parent_c_id = $_POST["parent_c_id"];
+		$return_array = array();
+		$status = true;
+		$mainData = array();
+		
+		$sql = "SELECT * FROM category WHERE parent_c_id = '".$parent_c_id."'";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {

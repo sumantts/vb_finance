@@ -96,8 +96,7 @@ function showNotification($msg_text){
     $('#alert_span').html($msg_text);
 }//end fun
 
-//Service
-/*****/
+//Category 
 function configureParentCategoryDd(){
     $.ajax({
         method: "POST",
@@ -121,8 +120,7 @@ function configureParentCategoryDd(){
             }//end if
         }        
     });//end ajax
-}//end
-/****/
+}//end 
 
 $(document).ready(function () {
     populateDataTable();

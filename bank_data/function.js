@@ -25,6 +25,31 @@ $('#myForm').on('submit', function(){
     return false;
 }) //end fun
 
+$('#myForm1').on('submit', function(){ 
+    $parent_c_id = $('#parent_c_id').val(); 
+    $sub_c_id = $('#sub_c_id').val(); 
+    $serial_no = $('#serial_no').val();
+
+    $.ajax({
+        type: "POST",
+        url: "bank_data/function.php",
+        dataType: "json",
+        data: { fn: "saveFormData1", parent_c_id: $parent_c_id, sub_c_id: $sub_c_id, serial_no: $serial_no}
+    })
+    .done(function( res ) {
+        //$res1 = JSON.parse(res);
+        if(res.status == true){    
+            $('#myForm1').trigger('reset');
+            $('#theme-settings-offcanvas1').offcanvas('hide'); 
+            alert('Data updated successfully');
+            populateDataTable();
+        }else{
+            alert(res.error_message);
+        }
+    });//end ajax 
+    return false;
+}) //end fun
+
 function populateDataTable(){ 
     $('#datatable-buttons').dataTable().fnClearTable();
     $('#datatable-buttons').dataTable().fnDestroy();
@@ -67,41 +92,81 @@ function editTabledata(sl){
     .done(function( res ) {
         $res1 = JSON.parse(res); 
         if($res1.status == true){ 
-            $('#welcome_text').html('Feedback Details of ' + $res1.stdn_name);
-            $('#ans_1').html('Feedback: '+$res1.ans_1);
-            $('#ans_2').html('Feedback: '+$res1.ans_2);
-            $('#ans_3').html('Feedback: '+$res1.ans_3);
-            $('#ans_4').html('Feedback: '+$res1.ans_4);
-            $('#ans_5').html('Feedback: '+$res1.ans_5);
-            $('#ans_6').html('Feedback: '+$res1.ans_6);
-            $('#ans_7').html('Feedback: '+$res1.ans_7);
-            $('#ans_8').html('Feedback: '+$res1.ans_8);
-            $('#ans_9').html('Feedback: '+$res1.ans_9);
-            $('#ans_10').html('Feedback: '+$res1.ans_10);
-            $('#ans_11').html('Feedback: '+$res1.ans_11);
-            $('#ans_12').html('Feedback: '+$res1.ans_12);
-            $('#ans_13').html('Feedback: '+$res1.ans_13);
-            $('#ans_14').html('Feedback: '+$res1.ans_14);
-            $('#ans_15').html('Feedback: '+$res1.ans_15);
-            $('#ans_16').html('Feedback: '+$res1.ans_16);
-            $('#ans_17').html('Feedback: '+$res1.ans_17);
-            $('#ans_18').html('Feedback: '+$res1.ans_18);
-            $('#ans_19').html('Feedback: '+$res1.ans_19);
-            $('#ans_20').html('Feedback: '+$res1.ans_20);
-            $('#ans_21').html('Feedback: '+$res1.ans_21);
-            $('#ans_22').html('Feedback: '+$res1.ans_22);
-            $('#ans_23').html('Feedback: '+$res1.ans_23);
-            $('#ans_24').html('Feedback: '+$res1.ans_24);
-            $('#ans_25').html('Feedback: '+$res1.ans_25);
-            $('#ans_26').html('Feedback: '+$res1.ans_26);
-            $('#ans_27').html('Feedback: '+$res1.ans_27);
-            $('#ans_28').html('Feedback: '+$res1.ans_28); 
+            $('#serial_no').val($res1.serial_no);
+            $('#parent_c_id').val($res1.parent_c_id).trigger('change');
+            $sub_c_id = $res1.sub_c_id;
+            setTimeout(function(){
+                $('#sub_c_id').val($sub_c_id).trigger('change');
+            },300);
              
         }        
     });//end ajax
 }//end if  
 
+//Category 
+function configureParentCategoryDd(){
+    $.ajax({
+        method: "POST",
+        url: "category/function.php",
+        data: { fn: "configureParentCategoryDd" }
+    })
+    .done(function( res ) {
+        $res1 = JSON.parse(res); 
+        if($res1.status == true){
+            $rows = $res1.data;
+
+            if($rows.length > 0){
+                $('#parent_c_id').html('');
+                $html = "<option value='0'>Select</option>";
+
+                for($i = 0; $i < $rows.length; $i++){
+                    $html += "<option value='"+$rows[$i].c_id+"'>"+$rows[$i].category_name+"</option>";                    
+                }//end for
+                
+                $('#parent_c_id').html($html);
+            }//end if
+        }        
+    });//end ajax
+}//end 
+
+//Fetch sub category
+$('#parent_c_id').on('change', function(){
+    $parent_c_id = $('#parent_c_id').val();
+    if(parseInt($parent_c_id) > 0){
+        $.ajax({
+            method: "POST",
+            url: "category/function.php",
+            data: { fn: "configureSubCategoryDd", parent_c_id: $parent_c_id }
+        })
+        .done(function( res ) {
+            $res1 = JSON.parse(res); 
+            if($res1.status == true){
+                $rows = $res1.data;
+
+                if($rows.length > 0){
+                    $('#sub_c_id').html('');
+                    $html = "<option value='0'>Select</option>";
+
+                    for($i = 0; $i < $rows.length; $i++){
+                        $html += "<option value='"+$rows[$i].c_id+"'>"+$rows[$i].category_name+"</option>";                    
+                    }//end for
+                    
+                    $('#sub_c_id').html($html);
+                }//end if
+            }        
+        });//end ajax
+    }else{
+        $('#sub_c_id').html('');
+        $html = "<option value='0'>Select</option>";
+        $('#sub_c_id').html($html);
+    }
+});
+
+$('#cancelForm1').on('click', function(){
+    $('#myForm1').trigger('reset');
+})
 
 $(document).ready(function () { 
     populateDataTable();
+    configureParentCategoryDd();
 });
