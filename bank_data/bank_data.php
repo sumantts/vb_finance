@@ -9,6 +9,11 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
             position: initial;
             display: none;
         }
+
+        table.dataTable thead th.no-sort:before,
+        table.dataTable thead th.no-sort:after {
+            display: none !important;
+        }
     </style>
     <!-- Begin page -->
     <div class="wrapper">
@@ -48,7 +53,43 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                     </div>
                     <!-- end page title --> 
 
+                    <!-- Filter Form -->
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="card mb-0 p-3">
+                                <h5 class="mt-0 font-16 fw-bold mb-2">All the(*) Fields are Required</h5>
+                                <div class="row">
+                                    <div class="col-12">                            
+                                        <form id="myForm2" name="myForm2" action="#" method="POST"> 
+                                            <div class="row g-2">
+                                                <div class="mb-2 col-md-6">
+                                                    <label for="parent_c_id1" class="form-label text-danger">Parent Category Name*</label>
+                                                    <select class="form-select" id="parent_c_id1" name="parent_c_id1" required>
+                                                        <option value='0'>Select</option>
+                                                    </select>
+                                                </div> 
+                                                <div class="mb-2 col-md-6">
+                                                    <label for="sub_c_id1" class="form-label text-danger">Sub Category Name*</label>
+                                                    <select class="form-select" id="sub_c_id1" name="sub_c_id1" required>
+                                                        <option value='0'>Select</option>
+                                                    </select>
+                                                </div> 
+                                            </div> 
+                                            
+                                            <div class="mb-2">
+                                                <small id="message_text1" class="d-block form-text text-muted"></small>   
+                                            </div>  
+                                                <button type="submit" class="btn btn-primary" id="submitForm2">Apply</button>                            
+                                                <button type="button" class="btn btn-dark" id="cancelForm2">Clear</button>
+                                        </form>
+                                    </div> 
+                                </div>  
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- // Filter Form -->
 
+                    
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
@@ -60,10 +101,12 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                      </div> -->
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="buttons-table-preview">
-                                            <div class="table-responsive">
+                                            <div class="table-responsive"> 
+
                                                 <table id="datatable-buttons" class="table dt-responsive nowrap w-100">
                                                     <thead>
                                                         <tr>
+                                                            <th class="no-sort"><input type="checkbox" id="selectAll"></th>
                                                             <th>SL#</th>
                                                             <th>Date</th>
                                                             <th>Narration</th>  
@@ -71,6 +114,8 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                                             <th>Value Date</th>  
                                                             <th>Withdrawal Amt.</th>
                                                             <th>Deposit Amt.</th> 
+                                                            <th>Category</th>
+                                                            <th>Obj#</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
