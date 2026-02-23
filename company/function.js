@@ -16,7 +16,7 @@ $('#myForm').on('submit', function(){
 
     $.ajax({
         type: "POST",
-        url: "category/function.php",
+        url: "company/function.php",
         dataType: "json",
         data: { fn: "saveFormData", serial_no: $serial_no, category_name: $category_name, parent_c_id: $parent_c_id, nature: $nature, part_of_plbs: $part_of_plbs, opening_balance: $opening_balance }
     })
@@ -53,7 +53,7 @@ function populateDataTable(){
     $('#datatable-buttons').DataTable({  
         responsive: true,
         serverMethod: 'GET',
-        ajax: {'url': 'category/function.php?fn=getTableData' },
+        ajax: {'url': 'company/function.php?fn=getTableData' },
         dom: 'Bfrtip' 
     });
 }//end fun
@@ -62,7 +62,7 @@ function editTabledata(sl){
     console.log('sl: ' + sl);
     $.ajax({
         method: "POST",
-        url: "category/function.php",
+        url: "company/function.php",
         data: { fn: "editTabledata", serial_no: sl }
     })
     .done(function( res ) {
@@ -83,7 +83,7 @@ function deleteTabledata(sl){
     if(confirm('Are you sure to delete the record?')){
         $.ajax({
             method: "POST",
-            url: "category/function.php",
+            url: "company/function.php",
             data: { fn: "deleteTabledata", serial_no: sl }
         })
         .done(function( res ) {
@@ -108,7 +108,7 @@ function showNotification($msg_text){
 function configureParentCategoryDd(){
     $.ajax({
         method: "POST",
-        url: "category/function.php",
+        url: "company/function.php",
         data: { fn: "configureParentCategoryDd" }
     })
     .done(function( res ) {

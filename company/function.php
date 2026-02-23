@@ -98,12 +98,8 @@
 
 						
 					$data[0] = $slno; 
-					$data[1] = $p_category_name; 
-					$data[2] = $category_name; 
-					$data[3] = $nature_txt;	
-					$data[4] = $part_of_plbs_txt;	
-					$data[5] = $opening_balance;	
-					$data[6] = $action_html;				
+					$data[1] = $p_category_name;  	
+					$data[2] = $action_html;				
 					array_push($mainData, $data);
 					$slno++;
 				}

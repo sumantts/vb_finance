@@ -55,11 +55,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                                 <thead>
                                                     <tr>
                                                         <th>SL#</th>
-                                                        <th>Parent Category Name</th> 
-                                                        <th>Category Name</th> 
-                                                        <th>Nature</th>
-                                                        <th>P/L or B/S</th>
-                                                        <th>Opening Balance</th>
+                                                        <th>company Name</th>  
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -160,7 +156,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
     <?php include('common/footer_js_dt1.php'); ?>        
     <!-- end Footer JS -->
     
-    <script src="category/function.js?d=<?=date('Ymdhis')?>"></script>
+    <script src="company/function.js?d=<?=date('Ymdhis')?>"></script>
 
 </body> 
 </html>

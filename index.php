@@ -25,6 +25,11 @@
 		include('dashboard/dashboard.php');
 		break; 
 
+		case 'company':
+        $title = "Company";
+		include('company/company.php');
+		break;
+
 		case 'category':
         $title = "Category";
 		include('category/category.php');
