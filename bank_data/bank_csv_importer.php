@@ -7,6 +7,7 @@
     # https://www.cloudways.com/blog/import-export-csv-using-php-and-mysql/
 
     ini_set('max_execution_time', 3600);
+    session_start();
 
     if (isset($_POST["Import"])) {
         $filename = $_FILES["file"]["tmp_name"];
@@ -43,7 +44,7 @@
         fgetcsv($file, 10000, ",");  // Adjust delimiter if needed
         
         // Prepare the SQL query 
-        $sql = "INSERT INTO bank_data (trans_date, narration, chq_ref_no, value_date, withdrawal_amount, deposit_amount) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO bank_data (co_id, trans_date, narration, chq_ref_no, value_date, withdrawal_amount, deposit_amount) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         
         if ($stmt === false) {
@@ -51,11 +52,12 @@
         } 
         
         // Bind parameters
-        $stmt->bind_param("ssssss", $trans_date, $narration, $chq_ref_no, $value_date, $withdrawal_amount, $deposit_amount);
+        $stmt->bind_param("sssssss", $co_id, $trans_date, $narration, $chq_ref_no, $value_date, $withdrawal_amount, $deposit_amount);
         
         
         while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
             // Assign values 
+		    $co_id = $_SESSION["co_id"];
             $trans_date1 = explode('/', $getData[0]); // A
             $trans_date = '20'.$trans_date1[2].'-'.$trans_date1[1].'-'.$trans_date1[0]; 
             $narration = $getData[1]; // B

@@ -587,7 +587,7 @@ $total_reviews_a = $result_a->num_rows;*/
     <?php include('common/theme_settings.php'); ?>   
 
     <!-- Footer JS Start -->
-    <?php include('common/footer_js.php'); ?>        
+    <?php include('common/footer_js_dt1.php'); ?>        
     <!-- end Footer JS -->
     
     <script src="dashboard/function.js?d=<?=date('Ymdhis')?>"></script>

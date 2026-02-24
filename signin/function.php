@@ -25,18 +25,32 @@
 			$username = $row['username'];
 		} else {
 			$status = false;
-		}
-		$con->close();				
+		}			
 		
 		
 		if($login_id > 0){
 			$_SESSION["username"] = $username;
 			$_SESSION["login_id"] = $login_id;
+
+			$co_id = 0;
+			$_SESSION["co_id"] = $co_id;
+
+			$last_selected = '1';
+			$sql2 = "SELECT * FROM company WHERE login_id = '".$login_id."' AND last_selected = '".$last_selected."'";
+			$result2 = $con->query($sql2);
+
+			if ($result2->num_rows > 0) { 
+				$row2 = $result2->fetch_array();
+				$co_id = $row2['co_id'];
+				$_SESSION["co_id"] = $co_id;
+			}
 		}else{
 			$status = false;
 			$message = 'Wrong Username or Password'; 	
 		}//end if
 
+		$con->close();	
+		
 		$return_result['status'] = $status;
 		$return_result['message'] = $message; 
 		echo json_encode($return_result);

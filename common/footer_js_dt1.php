@@ -32,4 +32,61 @@
             $('#serial_no').val('');
             $('#myForm').trigger('reset');
         }
+
+
+        function populateCompanyDD(){
+            $text = '';
+            $.ajax({
+                type: "POST",
+                url: "company/function.php",
+                dataType: "json",
+                data: { fn: "populateCompanyDD"}
+            })
+            .done(function( res ) { 
+                //console.log(JSON.stringify(res));
+                if(res.status == true){
+                    $companies = res.data;
+                    
+                    if($companies.length > 0){
+                        $sl = 1;
+                        $s_company_name = '';
+                        for($c = 0; $c < $companies.length; $c++){ 
+                            $text += '<a href="javascript:void(0);" class="dropdown-item" onClick="selectCompany(\''+$companies[$c].co_id+'\',\''+$companies[$c].company_name+'\')">';
+                                $text += '<span class="align-middle">'+$companies[$c].company_name+'</span>';
+                            $text += '</a>';
+                            $sl++;
+
+                            if($companies[$c].last_selected == '1'){
+                                $s_company_name = $companies[$c].company_name;
+                            }
+                        } 
+                        $('#company_list').html($text);
+                        $('#selected_company').html($s_company_name);
+                    }    
+                }  
+            });//end ajax 
+        }//end fun
+
+        function selectCompany(co_id, company_name){
+            console.log('co_id: '+co_id+' company_name: '+ company_name);
+            
+            $.ajax({
+                type: "POST",
+                url: "company/function.php",
+                dataType: "json",
+                data: { fn: "updateSelectedCompany", co_id_key: co_id}
+            })
+            .done(function( res ) { 
+                //console.log(JSON.stringify(res));
+                if(res.status == true){
+                    location.reload();
+                    populateCompanyDD();                     
+                }  
+            });//end ajax 
+
+        }//end fun
+
+        $(document).ready(function () { 
+            populateCompanyDD(); 
+        });
     </script>

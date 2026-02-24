@@ -7,6 +7,7 @@
     # https://www.cloudways.com/blog/import-export-csv-using-php-and-mysql/
 
     ini_set('max_execution_time', 3600);
+    session_start();
 
     if (isset($_POST["Import"])) {
         $filename = $_FILES["file"]["tmp_name"];
@@ -43,7 +44,7 @@
         fgetcsv($file, 10000, ",");  // Adjust delimiter if needed
         
         // Prepare the SQL query          
-        $sql = "INSERT INTO sales_data (client_name, address, state, pin_code, contact_no, pan_number, email_id, kyc_verified, plan_subscribed, date_of_subscription, transaction_id, plan_duration_month, subscription_end_date, pay_made_tax_amt, igst, cgst, sgst, total_gst, total_payment, invoice_number, payment_gateway, hsh_code, gateway_charges, gst_on_charges, total_charges) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO sales_data (co_id, client_name, address, state, pin_code, contact_no, pan_number, email_id, kyc_verified, plan_subscribed, date_of_subscription, transaction_id, plan_duration_month, subscription_end_date, pay_made_tax_amt, igst, cgst, sgst, total_gst, total_payment, invoice_number, payment_gateway, hsh_code, gateway_charges, gst_on_charges, total_charges) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         
         if ($stmt === false) {
@@ -51,13 +52,14 @@
         } 
         
         // Bind parameters
-        $stmt->bind_param("sssssssssssssssssssssssss", $client_name, $address, $state, $pin_code, $contact_no, $pan_number, $email_id, $kyc_verified, $plan_subscribed, $date_of_subscription, $transaction_id, $plan_duration_month, $subscription_end_date, $pay_made_tax_amt, $igst, $cgst, $sgst, $total_gst, $total_payment, $invoice_number, $payment_gateway, $hsh_code, $gateway_charges, $gst_on_charges, $total_charges);
+        $stmt->bind_param("ssssssssssssssssssssssssss", $co_id, $client_name, $address, $state, $pin_code, $contact_no, $pan_number, $email_id, $kyc_verified, $plan_subscribed, $date_of_subscription, $transaction_id, $plan_duration_month, $subscription_end_date, $pay_made_tax_amt, $igst, $cgst, $sgst, $total_gst, $total_payment, $invoice_number, $payment_gateway, $hsh_code, $gateway_charges, $gst_on_charges, $total_charges);
         
         
         
         while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
             // Assign values 
             if($getData[1] != ''){
+		        $co_id = $_SESSION["co_id"];
                 $trans_date1 = $getData[0]; // A
                 $client_name = $getData[1]; // B
                 $address = $getData[2]; // C

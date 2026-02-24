@@ -13,6 +13,7 @@
 		$return_array = array();
 		$status = true;
 		$error_message = '';
+		$co_id = $_SESSION["co_id"];
 
 		$serial_no = $_POST['serial_no']; 
 		$parent_c_id = $_POST['parent_c_id'];  
@@ -28,7 +29,7 @@
 			$result1 = $con->query($sql1);
 			$error_message = 'Data updated successfully';
 		}else{
-			$sql = "SELECT * FROM category WHERE category_name = '".$category_name."'";
+			$sql = "SELECT * FROM category WHERE category_name = '".$category_name."' AND co_id = '" .$co_id. "' ";
 			$result = $con->query($sql);
 
 			if ($result->num_rows > 0) {
@@ -36,7 +37,7 @@
 				$error_message = 'Category name already exists';
 			} else {
 				$status = true;
-				$sql2 = "INSERT INTO category (parent_c_id, category_name, nature, part_of_plbs, opening_balance) VALUES ('" .$parent_c_id. "', '".$category_name."', '" .$nature."', '" .$part_of_plbs."', '" .$opening_balance."')";
+				$sql2 = "INSERT INTO category (co_id, parent_c_id, category_name, nature, part_of_plbs, opening_balance) VALUES ('" .$co_id. "', '" .$parent_c_id. "', '".$category_name."', '" .$nature."', '" .$part_of_plbs."', '" .$opening_balance."')";
 				$result2 = $con->query($sql2);
 				$error_message = 'Data inserted successfully';
 			}
@@ -53,8 +54,10 @@
 	if($fn == 'getTableData'){
 		$return_array = array();
 		$status = true;
-		$mainData = array();
-		$sql = "SELECT * FROM category ORDER BY category_name ASC";
+		$mainData = array(); 
+		$co_id = $_SESSION["co_id"];
+
+		$sql = "SELECT * FROM category WHERE co_id = '" .$co_id. "' ORDER BY category_name ASC";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -163,11 +166,12 @@
 
 	//Get Category Group
 	if($fn == 'configureParentCategoryDd'){
+		$co_id = $_SESSION["co_id"];
 		$return_array = array();
 		$status = true;
 		$mainData = array();
 		
-		$sql = "SELECT * FROM category WHERE parent_c_id = '0'";
+		$sql = "SELECT * FROM category WHERE parent_c_id = '0' AND co_id = '" .$co_id. "' ";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -195,11 +199,12 @@
 	
 	if($fn == 'configureSubCategoryDd'){
 	    $parent_c_id = $_POST["parent_c_id"];
+		$co_id = $_SESSION["co_id"];
 		$return_array = array();
 		$status = true;
 		$mainData = array();
 		
-		$sql = "SELECT * FROM category WHERE parent_c_id = '".$parent_c_id."'";
+		$sql = "SELECT * FROM category WHERE parent_c_id = '".$parent_c_id."' AND co_id = '" .$co_id. "' ";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {

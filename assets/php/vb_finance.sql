@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2026 at 03:45 PM
+-- Generation Time: Feb 24, 2026 at 08:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bank_data` (
   `b_id` int(11) NOT NULL,
+  `co_id` int(11) NOT NULL COMMENT 'PK of company table',
   `trans_date` date NOT NULL,
   `narration` varchar(255) NOT NULL,
   `chq_ref_no` varchar(255) NOT NULL,
@@ -43,41 +44,24 @@ CREATE TABLE `bank_data` (
 -- Dumping data for table `bank_data`
 --
 
-INSERT INTO `bank_data` (`b_id`, `trans_date`, `narration`, `chq_ref_no`, `value_date`, `withdrawal_amount`, `deposit_amount`, `parent_c_id`, `sub_c_id`) VALUES
-(1, '2026-02-01', 'POS 403875XXXXXX7099 BHIKHARAM CHANDM', '0000603208548907', '2026-02-01', 45.00, 0.00, 0, 0),
-(2, '2026-02-01', 'ATW-403875XXXXXX7099-MC002953-HOWRAH', '0000603212388215', '2026-02-01', 1000.00, 0.00, 0, 0),
-(3, '2026-02-01', 'POS 403875XXXXXX7099 SPENCERS RETAIL', '0000000000006668', '2026-02-01', 94.75, 0.00, 17, 18),
-(4, '2026-02-02', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1237495209', 'AXISCN1237495209', '2026-02-02', 0.00, 2300.12, 0, 0),
-(5, '2026-02-02', '05311000015529-TPT-NBN6XWPJKPOBNWQZ-VIKASH BAGARIA', '0000000510354991', '2026-02-02', 10000.00, 0.00, 0, 0),
-(6, '2026-02-03', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1238757513', 'AXISCN1238757513', '2026-02-03', 0.00, 5200.00, 0, 0),
-(7, '2026-02-04', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1240498634', 'AXISCN1240498634', '2026-02-04', 0.00, 2200.00, 17, 18),
-(8, '2026-02-04', 'POS 403875XXXXXX7099 JUBILANT FOODWOR', '0000603518281638', '2026-02-04', 153.89, 0.00, 17, 18),
-(9, '2026-02-05', 'POS 403875XXXXXX7099 GST', '0000603647044548', '2026-02-05', 22000.00, 0.00, 0, 0),
-(10, '2026-02-06', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1242518629', 'AXISCN1242518629', '2026-02-06', 0.00, 1750.31, 0, 0),
-(11, '2026-02-06', '05311000015529-TPT-NBBPI0D2KBSY06ST-VIKASH BAGARIA', '0000000143963036', '2026-02-06', 12000.00, 0.00, 0, 0),
-(12, '2026-02-06', 'POS 403875XXXXXX7099 SPENCERS RETAIL', '0000000000008024', '2026-02-06', 303.40, 0.00, 0, 0),
-(13, '2026-02-07', 'POS 403875XXXXXX7099 CHAI BREAK EXPRE', '0000603811459834', '2026-02-07', 470.00, 0.00, 11, 12),
-(14, '2026-02-07', 'ATW-403875XXXXXX7099-MC002953-HOWRAH', '0000603811404905', '2026-02-07', 10000.00, 0.00, 11, 12),
-(15, '2026-02-07', 'POS 403875XXXXXX7099 FUNTAIL ENTERPRI', '0000603817576539', '2026-02-07', 156.00, 0.00, 11, 12),
-(16, '2026-02-08', 'DC INTL POS TXN DCC+ST 230126-EPR2603973253832', 'EPR2603973253832', '2026-02-08', 20.01, 0.00, 11, 12),
-(17, '2026-02-09', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1246057932', 'AXISCN1246057932', '2026-02-09', 0.00, 1250.50, 11, 12),
-(18, '2026-02-01', 'POS 403875XXXXXX7099 BHIKHARAM CHANDM', '0000603208548907', '2026-02-01', 45.00, 0.00, 17, 18),
-(19, '2026-02-01', 'ATW-403875XXXXXX7099-MC002953-HOWRAH', '0000603212388215', '2026-02-01', 1000.00, 0.00, 17, 18),
-(20, '2026-02-01', 'POS 403875XXXXXX7099 SPENCERS RETAIL', '0000000000006668', '2026-02-01', 94.75, 0.00, 17, 18),
-(21, '2026-02-02', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1237495209', 'AXISCN1237495209', '2026-02-02', 0.00, 2300.12, 0, 0),
-(22, '2026-02-02', '05311000015529-TPT-NBN6XWPJKPOBNWQZ-VIKASH BAGARIA', '0000000510354991', '2026-02-02', 10000.00, 0.00, 0, 0),
-(23, '2026-02-03', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1238757513', 'AXISCN1238757513', '2026-02-03', 0.00, 5200.00, 0, 0),
-(24, '2026-02-04', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1240498634', 'AXISCN1240498634', '2026-02-04', 0.00, 2200.00, 0, 0),
-(25, '2026-02-04', 'POS 403875XXXXXX7099 JUBILANT FOODWOR', '0000603518281638', '2026-02-04', 153.89, 0.00, 0, 0),
-(26, '2026-02-05', 'POS 403875XXXXXX7099 GST', '0000603647044548', '2026-02-05', 22000.00, 0.00, 0, 0),
-(27, '2026-02-06', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1242518629', 'AXISCN1242518629', '2026-02-06', 0.00, 1750.31, 0, 0),
-(28, '2026-02-06', '05311000015529-TPT-NBBPI0D2KBSY06ST-VIKASH BAGARIA', '0000000143963036', '2026-02-06', 12000.00, 0.00, 0, 0),
-(29, '2026-02-06', 'POS 403875XXXXXX7099 SPENCERS RETAIL', '0000000000008024', '2026-02-06', 303.40, 0.00, 0, 0),
-(30, '2026-02-07', 'POS 403875XXXXXX7099 CHAI BREAK EXPRE', '0000603811459834', '2026-02-07', 470.00, 0.00, 11, 12),
-(31, '2026-02-07', 'ATW-403875XXXXXX7099-MC002953-HOWRAH', '0000603811404905', '2026-02-07', 10000.00, 0.00, 11, 12),
-(32, '2026-02-07', 'POS 403875XXXXXX7099 FUNTAIL ENTERPRI', '0000603817576539', '2026-02-07', 156.00, 0.00, 11, 12),
-(33, '2026-02-08', 'DC INTL POS TXN DCC+ST 230126-EPR2603973253832', 'EPR2603973253832', '2026-02-08', 20.01, 0.00, 11, 12),
-(34, '2026-02-09', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1246057932', 'AXISCN1246057932', '2026-02-09', 0.00, 1250.50, 11, 12);
+INSERT INTO `bank_data` (`b_id`, `co_id`, `trans_date`, `narration`, `chq_ref_no`, `value_date`, `withdrawal_amount`, `deposit_amount`, `parent_c_id`, `sub_c_id`) VALUES
+(35, 2, '2026-02-01', 'POS 403875XXXXXX7099 BHIKHARAM CHANDM', '0000603208548907', '2026-02-01', 45.00, 0.00, 0, 0),
+(36, 2, '2026-02-01', 'ATW-403875XXXXXX7099-MC002953-HOWRAH', '0000603212388215', '2026-02-01', 1000.00, 0.00, 1, 7),
+(37, 2, '2026-02-01', 'POS 403875XXXXXX7099 SPENCERS RETAIL', '0000000000006668', '2026-02-01', 94.75, 0.00, 0, 0),
+(38, 2, '2026-02-02', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1237495209', 'AXISCN1237495209', '2026-02-02', 0.00, 2300.12, 0, 0),
+(39, 2, '2026-02-02', '05311000015529-TPT-NBN6XWPJKPOBNWQZ-VIKASH BAGARIA', '0000000510354991', '2026-02-02', 10000.00, 0.00, 0, 0),
+(40, 2, '2026-02-03', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1238757513', 'AXISCN1238757513', '2026-02-03', 0.00, 5200.00, 0, 0),
+(41, 2, '2026-02-04', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1240498634', 'AXISCN1240498634', '2026-02-04', 0.00, 2200.00, 0, 0),
+(42, 2, '2026-02-04', 'POS 403875XXXXXX7099 JUBILANT FOODWOR', '0000603518281638', '2026-02-04', 153.89, 0.00, 0, 0),
+(43, 2, '2026-02-05', 'POS 403875XXXXXX7099 GST', '0000603647044548', '2026-02-05', 22000.00, 0.00, 0, 0),
+(44, 2, '2026-02-06', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1242518629', 'AXISCN1242518629', '2026-02-06', 0.00, 1750.31, 0, 0),
+(45, 2, '2026-02-06', '05311000015529-TPT-NBBPI0D2KBSY06ST-VIKASH BAGARIA', '0000000143963036', '2026-02-06', 12000.00, 0.00, 0, 0),
+(46, 2, '2026-02-06', 'POS 403875XXXXXX7099 SPENCERS RETAIL', '0000000000008024', '2026-02-06', 303.40, 0.00, 0, 0),
+(47, 2, '2026-02-07', 'POS 403875XXXXXX7099 CHAI BREAK EXPRE', '0000603811459834', '2026-02-07', 470.00, 0.00, 0, 0),
+(48, 2, '2026-02-07', 'ATW-403875XXXXXX7099-MC002953-HOWRAH', '0000603811404905', '2026-02-07', 10000.00, 0.00, 1, 7),
+(49, 2, '2026-02-07', 'POS 403875XXXXXX7099 FUNTAIL ENTERPRI', '0000603817576539', '2026-02-07', 156.00, 0.00, 0, 0),
+(50, 2, '2026-02-08', 'DC INTL POS TXN DCC+ST 230126-EPR2603973253832', 'EPR2603973253832', '2026-02-08', 20.01, 0.00, 0, 0),
+(51, 2, '2026-02-09', 'NEFT CR-UTIB0001506-RAZORPAY PAYMENTS PVT LTD PAYMENT AGGREGATOR ESCR-VIKASH BAGARIA-AXISCN1246057932', 'AXISCN1246057932', '2026-02-09', 0.00, 1250.50, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -87,23 +71,51 @@ INSERT INTO `bank_data` (`b_id`, `trans_date`, `narration`, `chq_ref_no`, `value
 
 CREATE TABLE `category` (
   `c_id` int(11) NOT NULL,
+  `co_id` int(11) NOT NULL COMMENT 'PK of company Table',
   `parent_c_id` int(11) NOT NULL DEFAULT 0,
-  `category_name` varchar(255) NOT NULL
+  `category_name` varchar(255) NOT NULL,
+  `nature` tinyint(1) NOT NULL COMMENT '0=Select 1=Income 2=Expense',
+  `part_of_plbs` tinyint(1) NOT NULL COMMENT '0=select 1=pl 2=bs',
+  `opening_balance` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`c_id`, `parent_c_id`, `category_name`) VALUES
-(11, 0, 'Bank Statement'),
-(12, 11, 'Mini Statement'),
-(17, 0, 'Assets'),
-(18, 17, 'Current Assets'),
-(19, 17, 'Fixed Assets'),
-(20, 0, 'Liabilities'),
-(21, 20, 'Current Liabilities'),
-(22, 20, 'Long-Term Liabilities');
+INSERT INTO `category` (`c_id`, `co_id`, `parent_c_id`, `category_name`, `nature`, `part_of_plbs`, `opening_balance`) VALUES
+(1, 2, 0, 'Asset', 1, 1, 0.00),
+(2, 2, 1, 'Cash and Cash Equivalents', 0, 0, 1000.00),
+(3, 2, 1, 'Inventory', 0, 0, 1000.00),
+(4, 2, 1, 'Prepaid Expenses', 0, 0, 1000.00),
+(5, 2, 1, 'Accounts Receivable', 0, 0, 1000.00),
+(6, 2, 1, 'Property, Plant, and Equipment (PPE)', 0, 0, 1000.00),
+(7, 2, 1, 'Investments', 0, 0, 1000.00),
+(8, 2, 1, 'Intangible Assets', 0, 0, 1000.00),
+(9, 1, 0, 'Asset', 1, 1, 0.00),
+(10, 1, 9, 'Current Assets (Short-Term)', 0, 0, 1000.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company`
+--
+
+CREATE TABLE `company` (
+  `co_id` int(11) NOT NULL,
+  `login_id` int(11) NOT NULL COMMENT 'PK of login table',
+  `company_name` varchar(255) NOT NULL,
+  `last_selected` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`co_id`, `login_id`, `company_name`, `last_selected`, `created_at`) VALUES
+(1, 1, 'Company A', 0, '2026-02-25 00:02:05'),
+(2, 1, 'Company B', 1, '2026-02-25 00:02:31');
 
 -- --------------------------------------------------------
 
@@ -122,7 +134,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`login_id`, `username`, `password`) VALUES
-(1, 'vb_finance', 'vb_finance123');
+(1, 'vb_finance', '12345678'),
+(2, 'vb_finance1', '12345678');
 
 -- --------------------------------------------------------
 
@@ -132,6 +145,7 @@ INSERT INTO `login` (`login_id`, `username`, `password`) VALUES
 
 CREATE TABLE `sales_data` (
   `sa_id` int(11) NOT NULL,
+  `co_id` int(11) NOT NULL COMMENT 'PK of company Table',
   `client_name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
@@ -163,19 +177,9 @@ CREATE TABLE `sales_data` (
 -- Dumping data for table `sales_data`
 --
 
-INSERT INTO `sales_data` (`sa_id`, `client_name`, `address`, `state`, `pin_code`, `contact_no`, `pan_number`, `email_id`, `kyc_verified`, `plan_subscribed`, `date_of_subscription`, `transaction_id`, `plan_duration_month`, `subscription_end_date`, `pay_made_tax_amt`, `igst`, `cgst`, `sgst`, `total_gst`, `total_payment`, `invoice_number`, `payment_gateway`, `hsh_code`, `gateway_charges`, `gst_on_charges`, `total_charges`) VALUES
-(1, 'vikash', '121, gt road', 'westbengal', '711202', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'MEGA OPTIONS', '0000-00-00', '1234567890', 3, '0000-00-00', 1000.00, 0.00, 90.00, 90.00, 180.00, 1180.00, 'VB/25-26/WEB/228', 'RAZORPAY', '997156', 25.37, 4.57, 29.94),
-(2, 'atanu', '124/6161a.road', 'UTTAR PRADESH', '123456', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'EQUITY', '0000-00-00', '456789654', 1, '0000-00-00', 2000.00, 360.00, 90.00, 90.00, 360.00, 2360.00, 'VB/25-26/WEB/228', 'RAZORPAY', '', 0.00, 0.00, 0.00),
-(3, 'vikash', '121, gt road', 'westbengal', '711202', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'MEGA OPTIONS', '0000-00-00', '1234567890', 3, '0000-00-00', 1000.00, 0.00, 90.00, 90.00, 180.00, 1180.00, 'VB/25-26/WEB/228', 'RAZORPAY', '997156', 25.37, 4.57, 29.94),
-(4, 'atanu', '124/6161a.road', 'UTTAR PRADESH', '123456', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'EQUITY', '0000-00-00', '456789654', 1, '0000-00-00', 2000.00, 360.00, 90.00, 90.00, 360.00, 2360.00, 'VB/25-26/WEB/228', 'RAZORPAY', '', 0.00, 0.00, 0.00),
-(5, 'vikash', '121, gt road', 'westbengal', '711202', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'MEGA OPTIONS', '0000-00-00', '1234567890', 3, '0000-00-00', 1000.00, 0.00, 90.00, 90.00, 180.00, 1180.00, 'VB/25-26/WEB/228', 'RAZORPAY', '997156', 25.37, 4.57, 29.94),
-(6, 'atanu', '124/6161a.road', 'UTTAR PRADESH', '123456', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'EQUITY', '0000-00-00', '456789654', 1, '0000-00-00', 2000.00, 360.00, 90.00, 90.00, 360.00, 2360.00, 'VB/25-26/WEB/228', 'RAZORPAY', '', 0.00, 0.00, 0.00),
-(7, 'vikash', '121, gt road', 'westbengal', '711202', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'MEGA OPTIONS', '0000-00-00', '1234567890', 3, '0000-00-00', 1000.00, 0.00, 90.00, 90.00, 180.00, 1180.00, 'VB/25-26/WEB/228', 'RAZORPAY', '997156', 25.37, 4.57, 29.94),
-(8, 'atanu', '124/6161a.road', 'UTTAR PRADESH', '123456', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'EQUITY', '0000-00-00', '456789654', 1, '0000-00-00', 2000.00, 360.00, 90.00, 90.00, 360.00, 2360.00, 'VB/25-26/WEB/228', 'RAZORPAY', '', 0.00, 0.00, 0.00),
-(9, 'vikash', '121, gt road', 'westbengal', '711202', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'MEGA OPTIONS', '0000-00-00', '1234567890', 3, '0000-00-00', 1000.00, 0.00, 90.00, 90.00, 180.00, 1180.00, 'VB/25-26/WEB/228', 'RAZORPAY', '997156', 25.37, 4.57, 29.94),
-(10, 'atanu', '124/6161a.road', 'UTTAR PRADESH', '123456', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'EQUITY', '0000-00-00', '456789654', 1, '0000-00-00', 2000.00, 360.00, 90.00, 90.00, 360.00, 2360.00, 'VB/25-26/WEB/228', 'RAZORPAY', '', 0.00, 0.00, 0.00),
-(11, 'vikash', '121, gt road', 'westbengal', '711202', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'MEGA OPTIONS', '0000-00-00', '1234567890', 3, '0000-00-00', 1000.00, 0.00, 90.00, 90.00, 180.00, 1180.00, 'VB/25-26/WEB/228', 'RAZORPAY', '997156', 25.37, 4.57, 29.94),
-(12, 'atanu', '124/6161a.road', 'UTTAR PRADESH', '123456', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'EQUITY', '0000-00-00', '456789654', 1, '0000-00-00', 2000.00, 360.00, 90.00, 90.00, 360.00, 2360.00, 'VB/25-26/WEB/228', 'RAZORPAY', '', 0.00, 0.00, 0.00);
+INSERT INTO `sales_data` (`sa_id`, `co_id`, `client_name`, `address`, `state`, `pin_code`, `contact_no`, `pan_number`, `email_id`, `kyc_verified`, `plan_subscribed`, `date_of_subscription`, `transaction_id`, `plan_duration_month`, `subscription_end_date`, `pay_made_tax_amt`, `igst`, `cgst`, `sgst`, `total_gst`, `total_payment`, `invoice_number`, `payment_gateway`, `hsh_code`, `gateway_charges`, `gst_on_charges`, `total_charges`) VALUES
+(1, 2, 'vikash', '121, gt road', 'westbengal', '711202', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'MEGA OPTIONS', '0000-00-00', '1234567890', 3, '0000-00-00', 1000.00, 0.00, 90.00, 90.00, 180.00, 1180.00, 'VB/25-26/WEB/228', 'RAZORPAY', '997156', 25.37, 4.57, 29.94),
+(2, 2, 'atanu', '124/6161a.road', 'UTTAR PRADESH', '123456', '123456789', 'abcdesfg', 'test@gmail.com', 'Yes', 'EQUITY', '0000-00-00', '456789654', 1, '0000-00-00', 2000.00, 360.00, 90.00, 90.00, 360.00, 2360.00, 'VB/25-26/WEB/228', 'RAZORPAY', '', 0.00, 0.00, 0.00);
 
 --
 -- Indexes for dumped tables
@@ -192,6 +196,12 @@ ALTER TABLE `bank_data`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`c_id`);
+
+--
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`co_id`);
 
 --
 -- Indexes for table `login`
@@ -213,25 +223,31 @@ ALTER TABLE `sales_data`
 -- AUTO_INCREMENT for table `bank_data`
 --
 ALTER TABLE `bank_data`
-  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `company`
+--
+ALTER TABLE `company`
+  MODIFY `co_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sales_data`
 --
 ALTER TABLE `sales_data`
-  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

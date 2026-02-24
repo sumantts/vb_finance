@@ -125,6 +125,10 @@ function configureParentCategoryDd(){
                 }//end for
                 
                 $('#parent_c_id').html($html);
+            }else{
+                $('#parent_c_id').html('');
+                $html = "<option value='0'>Select</option>";
+                $('#parent_c_id').html($html);
             }//end if
         }        
     });//end ajax

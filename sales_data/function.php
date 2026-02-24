@@ -44,10 +44,11 @@
 
 	//function start
 	if($fn == 'getTableData'){
+		$co_id = $_SESSION["co_id"];
 		$return_array = array();
 		$status = true;
 		$mainData = array();
-		$sql = "SELECT * FROM sales_data ORDER BY sa_id DESC";
+		$sql = "SELECT * FROM sales_data WHERE co_id = '" .$co_id. "' ORDER BY sa_id DESC";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -217,71 +218,7 @@
     	echo json_encode($return_array);
 	}//function end 
 
-	//Unit Type 	
-	if($fn == 'getUnitTypeDD'){
-		$return_result = array();
-		$datas = array();
-		$status = true;
-		$error_msg = ''; 
-
-		$query2 = "CALL mst_getUnit()";
-		mysqli_multi_query($con, $query2);
-		do {
-			if ($result2 = mysqli_store_result($con)) {
-				while ($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)) { 
-					$Id = $row2['Id'];
-					$UName = $row2['UName'];
-
-					if($Id != ''){
-						$data = new stdClass();						
-						$data->Id = $Id; 
-						$data->UName = $UName;
-						array_push($datas, $data);
-					}
-				}
-			}
-			if (mysqli_more_results($con)) {
-			}
-		} while (mysqli_next_result($con));
-		
-		$return_result['status'] = $status;
-		$return_result['datas'] = $datas;
-		echo json_encode($return_result);
-	}//end function 
-	
-
-	//Item Category 	
-	if($fn == 'itemCategoryDD'){
-		$return_result = array();
-		$datas = array();
-		$status = true;
-		$error_msg = ''; 
-		$tId = 1;
-
-		$query2 = "CALL mst_getCategory('".$tId."')";
-		mysqli_multi_query($con, $query2);
-		do {
-			if ($result2 = mysqli_store_result($con)) {
-				while ($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)) { 
-					$Id = $row2['Id'];
-					$UName = $row2['UName'];
-
-					if($Id != ''){
-						$data = new stdClass();						
-						$data->Id = $Id; 
-						$data->UName = $UName;
-						array_push($datas, $data);
-					}
-				}
-			}
-			if (mysqli_more_results($con)) {
-			}
-		} while (mysqli_next_result($con));
-		
-		$return_result['status'] = $status;
-		$return_result['datas'] = $datas;
-		echo json_encode($return_result);
-	}//end function 
+	   
 	
 
 ?>

@@ -6,41 +6,7 @@
 	    $fn = $_GET["fn"];
 	}else if(isset($_POST["fn"])){
 	    $fn = $_POST["fn"];
-	}					
-	
-	//save Form Data
-	if($fn == 'saveFormData'){
-		$return_array = array();
-		$status = true;
-		$error_message = '';
-		$stat_bool = false;
-
-		$itemName = $_POST['itemName']; 
-		$unitType = $_POST['unitType'];
-		$itemCategory = $_POST['itemCategory']; 
-		$serial_no = $_POST['serial_no']; 
-
-		$ItmId = '';
-		$ItmCd = '';
-
-		$UsrId = $_SESSION['UsrId'];
-		
-		$query = "CALL usp_InsertItem('".$serial_no."', '".$ItmCd."', '".$itemName."', '".$unitType."', '".$itemCategory."')";
-		mysqli_multi_query($con, $query);
-		do {
-			if ($result = mysqli_store_result($con)) {
-				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-					 
-				}
-			}
-			if (mysqli_more_results($con)) {
-			}
-		} while (mysqli_next_result($con)); 
-
-		$return_array['status'] = $status;  
-		$return_array['error_message'] = $error_message; 
-    	echo json_encode($return_array);
-	}
+	} 
 	
 	
 	if($fn == 'saveFormData1'){
@@ -95,10 +61,11 @@
 
 	//function start
 	if($fn == 'getTableData'){
+		$co_id = $_SESSION["co_id"];
 		$return_array = array();
 		$status = true;
 		$mainData = array();
-		$sql = "SELECT * FROM bank_data ORDER BY trans_date DESC";
+		$sql = "SELECT * FROM bank_data WHERE co_id = '" .$co_id. "' ORDER BY trans_date DESC";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -226,73 +193,7 @@
 
 		$return_array['status'] = $status;		
     	echo json_encode($return_array);
-	}//function end 
-
-	//Unit Type 	
-	if($fn == 'getUnitTypeDD'){
-		$return_result = array();
-		$datas = array();
-		$status = true;
-		$error_msg = ''; 
-
-		$query2 = "CALL mst_getUnit()";
-		mysqli_multi_query($con, $query2);
-		do {
-			if ($result2 = mysqli_store_result($con)) {
-				while ($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)) { 
-					$Id = $row2['Id'];
-					$UName = $row2['UName'];
-
-					if($Id != ''){
-						$data = new stdClass();						
-						$data->Id = $Id; 
-						$data->UName = $UName;
-						array_push($datas, $data);
-					}
-				}
-			}
-			if (mysqli_more_results($con)) {
-			}
-		} while (mysqli_next_result($con));
-		
-		$return_result['status'] = $status;
-		$return_result['datas'] = $datas;
-		echo json_encode($return_result);
-	}//end function 
-	
-
-	//Item Category 	
-	if($fn == 'itemCategoryDD'){
-		$return_result = array();
-		$datas = array();
-		$status = true;
-		$error_msg = ''; 
-		$tId = 1;
-
-		$query2 = "CALL mst_getCategory('".$tId."')";
-		mysqli_multi_query($con, $query2);
-		do {
-			if ($result2 = mysqli_store_result($con)) {
-				while ($row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC)) { 
-					$Id = $row2['Id'];
-					$UName = $row2['UName'];
-
-					if($Id != ''){
-						$data = new stdClass();						
-						$data->Id = $Id; 
-						$data->UName = $UName;
-						array_push($datas, $data);
-					}
-				}
-			}
-			if (mysqli_more_results($con)) {
-			}
-		} while (mysqli_next_result($con));
-		
-		$return_result['status'] = $status;
-		$return_result['datas'] = $datas;
-		echo json_encode($return_result);
-	}//end function 
+	}//function end   
 	
 
 ?>

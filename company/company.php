@@ -105,36 +105,8 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                         <div class="col-12">                            
                             <form id="myForm" name="myForm" action="#" method="POST">
                                 <div class="mb-2">
-                                    <label for="category_name" class="form-label text-danger">Category Name*</label>
-                                    <input type="text" class="form-control" id="category_name" name="category_name" aria-describedby="category_name" required>
-                                </div> 
-                                <div class="mb-2">
-                                    <label for="parent_c_id" class="form-label">Parent Category Name</label>
-                                    <select class="form-select" id="parent_c_id" name="parent_c_id" aria-describedby="parent_c_id">
-                                    </select>
-                                </div>  
-
-                                <div class="mb-2 d-block" id="div_nature">
-                                    <label for="nature" class="form-label">Nature</label>
-                                    <select class="form-select" id="nature" name="nature">
-                                        <option value='0'>Select</option>
-                                        <option value='1'>Income</option>
-                                        <option value='2'>Expense</option>
-                                    </select>
-                                </div>   
-
-                                <div class="mb-2 d-block" id="div_plbs">
-                                    <label for="part_of_plbs" class="form-label">Part of (P/L or B/S)</label>
-                                    <select class="form-select" id="part_of_plbs" name="part_of_plbs">
-                                        <option value='0'>Select</option>
-                                        <option value='1'>Profit and Loss</option>
-                                        <option value='2'>Balance Sheet</option>
-                                    </select>
-                                </div> 
-
-                                <div class="mb-2 d-none" id="div_opn_bal">
-                                    <label for="opening_balance" class="form-label">Opening Balance</label>
-                                    <input type="text" class="form-control" id="opening_balance" name="opening_balance">
+                                    <label for="company_name" class="form-label text-danger">Company Name*</label>
+                                    <input type="text" class="form-control" id="company_name" name="company_name" required>
                                 </div> 
                                 
                                 <div class="mb-3">

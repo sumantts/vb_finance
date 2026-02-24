@@ -119,18 +119,12 @@
                     </li>
 
                      <li class="dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12">
-                            <span class="align-middle d-none d-lg-inline-block">Company A</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">        
+                            <img src="assets/images/flags/india.jpg" alt="user-image" class="me-0 me-sm-1" height="12">                    
+                            <span class="align-middle d-none d-lg-inline-block" id="selected_company">Company A</span><i class="mdi mdi-chevron-down d-block d-sm-inline-block align-middle"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">                            
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Company A</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Company B</span>
-                            </a>
-
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated" id="company_list">                            
+                            <a href="javascript:void(0);" class="dropdown-item"> <span class="align-middle">Company A</span> </a> 
                         </div>
                     </li>
 
