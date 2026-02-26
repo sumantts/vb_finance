@@ -1,4 +1,4 @@
-
+/*****
 $('#myForm').on('submit', function(){ 
     $itemName = $('#itemName').val(); 
     $unitType = $('#unitType').val();
@@ -49,54 +49,107 @@ $('#myForm1').on('submit', function(){
     });//end ajax 
     return false;
 }) //end fun
-
+****/
 
 
 $('#myForm2').on('submit', function(){ 
-    $parent_c_id1 = $('#parent_c_id1').val(); 
-    $sub_c_id1 = $('#sub_c_id1').val(); 
-    $messageId = 'message_text1';    
+    $from_date = $('#from_date').val(); 
+    $to_date = $('#to_date').val(); 
+    $messageId = 'message_text1'; 
+
+    $table_body = '';
+    // Call Svc
+    $.ajax({
+        type: "POST",
+        url: "trial_balance/function.php",
+        dataType: "json",
+        data: { fn: "saveFormData2", from_date: $from_date, to_date: $to_date}
+    })
+    .done(function( res ) {
+        //$res1 = JSON.parse(res);
+        if(res.status == true){ 
+            $all_categories = res.all_categories; 
+            $total_debit_balance = res.total_debit_balance; 
+            $total_credit_balance = res.total_credit_balance; 
+
+            if($all_categories.length > 0){
+                for($i = 0; $i < $all_categories.length; $i++){
+                    $c_credit_balance = $all_categories[$i].credit_balance;
+                    $c_debit_balance = $all_categories[$i].debit_balance; 
+                    $category_name = $all_categories[$i].category_name;  
+                    $nature = $all_categories[$i].nature;  
+                    $sub_categories = $all_categories[$i].sub_categories; 
+
+                    if(parseFloat($c_credit_balance) > 0 || parseFloat($c_debit_balance) > 0){
+                        $table_body += '<tr>'; 
+                            $table_body += '<td><button class="toggle-btn">+</button> '+$category_name+'</td>';
+                            if(parseFloat($c_debit_balance) > 0){
+                                $table_body += '<td style="text-align: right;">'+$c_debit_balance.toFixed(2)+'</td>';
+                            }else{
+                                $table_body += '<td>&nbsp;</td>';
+                            }
+                            
+                            if(parseFloat($c_credit_balance) > 0){
+                                $table_body += '<td style="text-align: right;">'+$c_credit_balance.toFixed(2)+'</td>';
+                            }else{
+                                $table_body += '<td>&nbsp;</td>';
+                            } 
+                        $table_body += '</tr>';
+                        
+                        //sub categories  
+                        /*****/
+                        if($sub_categories.length > 0){
+                            $table_body += '<tr class="child-row">'; 
+                                $table_body += '<td colspan="3">';
+                                    $table_body += '<table class="table table-sm table-centered mb-0">';
+
+                                    for($j = 0; $j < $sub_categories.length; $j++){
+                                        $sub_category_name = $sub_categories[$j].sub_category_name;
+                                        $sub_c_debit_balance = $sub_categories[$j].debit_balance;
+                                        $sub_c_credit_balance = $sub_categories[$j].credit_balance;
+                                        /*****/
+                                        if(parseFloat($sub_c_debit_balance) > 0 || parseFloat($sub_c_credit_balance) > 0){
+                                            $table_body += '<tr>'; 
+                                                $table_body += '<td>'+$sub_category_name+'</td>';
+                                                if(parseFloat($sub_c_debit_balance) > 0){
+                                                    $table_body += '<td style="text-align: right;">'+$sub_c_debit_balance.toFixed(2)+'</td>';
+                                                }else{
+                                                    $table_body += '<td>&nbsp;</td>';
+                                                }
+                                                
+                                                if(parseFloat($sub_c_credit_balance) > 0){
+                                                    $table_body += '<td style="text-align: right;">'+$sub_c_credit_balance.toFixed(2)+'</td>';
+                                                }else{
+                                                    $table_body += '<td>&nbsp;</td>';
+                                                } 
+                                            $table_body += '</tr>';
+                                        }//end if
+                                        /****/
+                                    }//end for 
+                                    
+                                    $table_body += '</table>';
+                                $table_body += '</td>';
+                            $table_body += '</tr>';
+                        }//end if 
+                        /***/       
+                    }//end if
+                }//end for i  
+
+                $table_body += '<tr><td><b>Total</b></td><td style="text-align: right;"><b>'+$total_debit_balance+'</b></td><td style="text-align: right;"><b>'+$total_credit_balance+'</b></td></tr>';
+                console.log('table_body:: '+$table_body)
+                $("#myTbody").html($table_body);
+                
+            }//end if
+        }
+    });//end ajax
     
-    var table = $('#datatable-buttons').DataTable();
-    $selectedData = [];
-    table.$('input.rowCheckbox:checked').each(function () {
-        var row = $(this).closest('tr');
-        $selectedData.push({
-            //sl: row.find('td:eq(1)').text(),
-            //date: row.find('td:eq(2)').text(),
-            obj_id: row.find('td:eq(9)').text()
-        });
-    });
-    console.log(JSON.stringify($selectedData));
-
-    if($selectedData.length == 0){
-        $messageText = 'Warning! Please chech the checkbox, select the table row first';
-        showMessage($messageId, $messageText); 
-    }else{
-        $messageText = '';
-        hideMessage($messageId, $messageText); 
-
-        // Call Svc
-        $.ajax({
-            type: "POST",
-            url: "trial_balance/function.php",
-            dataType: "json",
-            data: { fn: "saveFormData2", selectedData: $selectedData, parent_c_id: $parent_c_id1, sub_c_id: $sub_c_id1}
-        })
-        .done(function( res ) {
-            //$res1 = JSON.parse(res);
-            if(res.status == true){    
-                $('#myForm2').trigger('reset');
-                $messageText = 'Category name updated successfully';
-                populateDataTable();
-            }else{
-                $messageText = res.error_message;
-            }
-            showMessage($messageId, $messageText); 
-        });//end ajax 
-    }//end 
+    $messageText = '';
+    hideMessage($messageId, $messageText); 
+    
     return false;
 }) //end fun
+
+/****
 
 function populateDataTable(){ 
     $('#datatable-buttons').dataTable().fnClearTable();
@@ -179,8 +232,6 @@ function configureParentCategoryDd(){
         }        
     });//end ajax
 }//end 
-
- 
 
 //Category  1
 function configureParentCategoryDd1(){
@@ -297,6 +348,7 @@ $(document).ready(function(){
         }
     });
 });
+*****/
 
 // Working with Previous and Next page also
 /**
@@ -345,24 +397,34 @@ function hideMessage($messageId, $messageText){
     $('#'+$messageId).addClass('d-none');
 }
 
-$(document).ready(function () {
+$(document).on("click", ".toggle-btn", function () {
 
+    var parentRow = $(this).closest("tr");
+    var childRow = parentRow.next(".child-row");
+
+    childRow.toggle();
+
+    // Optional: change button text
+    if ($(this).text() == "+") {
+        $(this).text("-");
+    } else {
+        $(this).text("+");
+    }
+
+});
+
+/*$(document).ready(function () {
     $(".toggle-btn").click(function () {
-
         var childRow = $(this).closest("tr").next(".child-row");
-
         childRow.slideToggle(200);
-
         // Change + / -
         if ($(this).text() == "+") {
             $(this).text("-");
         } else {
             $(this).text("+");
         }
-
     });
-
-});
+});*/
 
 
 $(document).ready(function () { 

@@ -60,21 +60,24 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                     <div class="col-12">                            
                                         <form id="myForm2" name="myForm2" action="#" method="POST"> 
                                             <div class="row g-2">
-                                                <div class="mb-2 col-md-6">
+                                                <div class="mb-2 col-md-3">
                                                     <label for="from_date" class="form-label text-danger">From Date*</label>
-                                                    <input type="date" class="form-control" id="from_date" name="from_date" required> 
+                                                    <input type="date" class="form-control" id="from_date" name="from_date" value="<?=date('Y-m-d')?>" required> 
                                                 </div> 
-                                                <div class="mb-2 col-md-6">
+                                                <div class="mb-2 col-md-3">
                                                     <label for="to_date" class="form-label text-danger">To date*</label>
-                                                    <input type="date" class="form-control" id="to_date" name="to_date" required> 
-                                                </div> 
+                                                    <input type="date" class="form-control" id="to_date" name="to_date" value="<?=date('Y-m-d')?>" required> 
+                                                </div>  
+                                                <div class="mb-2 col-md-3"> 
+                                                    <label for="to_date" class="form-label text-danger">&nbsp;</label>
+                                                    <button type="submit" class="btn btn-primary mt-4" id="submitForm2">Submit</button>                            
+                                                    <button type="button" class="btn btn-dark mt-4" id="cancelForm2">Clear</button>
+                                                </div>  
                                             </div> 
                                             
                                             <div class="mb-2">
                                                 <small id="message_text1" class="d-block form-text text-muted"></small>   
-                                            </div>  
-                                                <button type="submit" class="btn btn-primary" id="submitForm2">Submit</button>                            
-                                                <button type="button" class="btn btn-dark" id="cancelForm2">Clear</button>
+                                            </div> 
                                         </form>
                                     </div> 
                                 </div>  
@@ -97,16 +100,16 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                         <div class="tab-pane show active" id="buttons-table-preview">
                                             <div class="table-responsive"> 
 
-                                                <table id="trial_balance" class="table dt-responsive nowrap w-100">
+                                                <table id="trial_balance" class="table table-sm table-centered mb-0">
                                                     <thead>
                                                         <tr> 
                                                             <th>Ledger name</th>
-                                                            <th>Debit Balance</th>
-                                                            <th>Credit Balance</th>  
+                                                            <th style="text-align: right;">Debit Balance</th>
+                                                            <th style="text-align: right;">Credit Balance</th>  
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr class="parent-row"> 
+                                                    <tbody id="myTbody">
+                                                        <!-- <tr class="parent-row"> 
                                                             <td><button class="toggle-btn">+</button> Mototcar</td>
                                                             <td>500,000</td>
                                                             <td>&nbsp;</td>  
@@ -155,7 +158,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                        </tr>                                                   
+                                                        </tr>-->                                                   
                                                     </tbody>
                                                 </table>
                                             </div>
