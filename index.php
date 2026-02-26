@@ -45,6 +45,11 @@
 		include('sales_data/sales_data.php');
 		break; 
 		
+		case 'trial-balance':
+		$title = "Trial Balance";
+		include('trial_balance/trial_balance.php');
+		break; 
+		
 						
 		default:
 		include('signin/signin.php');

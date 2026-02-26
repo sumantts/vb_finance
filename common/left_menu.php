@@ -71,17 +71,25 @@
 
                     <li class="side-nav-item <?php if($p == 'bank-data'){?>menuitem-active<?php } ?>">
                         <a href="?p=bank-data" class="side-nav-link">
-                            <i class="uil-user-plus"></i>
+                            <i class="uil-building"></i>
                             <span> Bank Data </span>
                         </a>
                     </li>                     
 
                     <li class="side-nav-item <?php if($p == 'sales-data'){?>menuitem-active<?php } ?>">
                         <a href="?p=sales-data" class="side-nav-link">
-                            <i class="uil-user-plus"></i>
+                            <i class="uil-money-stack"></i>
                             <span> Sales Data </span>
                         </a>
+                    </li>                     
+
+                    <li class="side-nav-item <?php if($p == 'trial-balance'){?>menuitem-active<?php } ?>">
+                        <a href="?p=trial-balance" class="side-nav-link">
+                            <i class="uil-money-bill-stack"></i>
+                            <span>Trial Balance</span>
+                        </a>
                     </li> 
+
                 </ul>
                 <!--- End Sidemenu -->
 
