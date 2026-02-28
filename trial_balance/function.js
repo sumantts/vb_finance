@@ -1,55 +1,5 @@
-/*****
-$('#myForm').on('submit', function(){ 
-    $itemName = $('#itemName').val(); 
-    $unitType = $('#unitType').val();
-    $itemCategory = $('#itemCategory').val(); 
-    $serial_no = $('#serial_no').val();
 
-    $.ajax({
-        type: "POST",
-        url: "trial_balance/function.php",
-        dataType: "json",
-        data: { fn: "saveFormData", itemName: $itemName, unitType: $unitType, itemCategory: $itemCategory, serial_no: $serial_no}
-    })
-    .done(function( res ) {
-        //$res1 = JSON.parse(res);
-        if(res.status == true){    
-            $('#myForm').trigger('reset');
-            $('#theme-settings-offcanvas').offcanvas('hide'); 
-            alert('Data updated successfully');
-            populateDataTable();
-        }else{
-            alert(res.error_message);
-        }
-    });//end ajax 
-    return false;
-}) //end fun
 
-$('#myForm1').on('submit', function(){ 
-    $parent_c_id = $('#parent_c_id').val(); 
-    $sub_c_id = $('#sub_c_id').val(); 
-    $serial_no = $('#serial_no').val();
-
-    $.ajax({
-        type: "POST",
-        url: "trial_balance/function.php",
-        dataType: "json",
-        data: { fn: "saveFormData1", parent_c_id: $parent_c_id, sub_c_id: $sub_c_id, serial_no: $serial_no}
-    })
-    .done(function( res ) {
-        //$res1 = JSON.parse(res);
-        if(res.status == true){    
-            $('#myForm1').trigger('reset');
-            $('#theme-settings-offcanvas1').offcanvas('hide'); 
-            alert('Data updated successfully');
-            populateDataTable();
-        }else{
-            alert(res.error_message);
-        }
-    });//end ajax 
-    return false;
-}) //end fun
-****/
 
 
 $('#myForm2').on('submit', function(){ 
@@ -101,7 +51,7 @@ $('#myForm2').on('submit', function(){
                         if($sub_categories.length > 0){
                             $table_body += '<tr class="child-row">'; 
                                 $table_body += '<td colspan="3">';
-                                    $table_body += '<table class="table table-sm table-centered mb-0">';
+                                    $table_body += '<table class="table table-sm table-bordered mb-0">';
 
                                     for($j = 0; $j < $sub_categories.length; $j++){
                                         $sub_category_name = $sub_categories[$j].sub_category_name;

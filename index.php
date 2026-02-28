@@ -50,6 +50,11 @@
 		include('trial_balance/trial_balance.php');
 		break; 
 		
+		case 'profit-loss':
+		$title = "Profit and Loss";
+		include('profit_loss/profit_loss.php');
+		break; 
+		
 						
 		default:
 		include('signin/signin.php');

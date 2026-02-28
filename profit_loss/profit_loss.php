@@ -100,65 +100,70 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                         <div class="tab-pane show active" id="buttons-table-preview">
                                             <div class="table-responsive"> 
 
-                                                <table id="trial_balance" class="table table-sm table-bordered mb-0">
+                                                <table id="trial_balance" class="table table-sm table-centered mb-0">
                                                     <thead>
                                                         <tr> 
-                                                            <th>Ledger name</th>
-                                                            <th style="text-align: right;">Debit Balance</th>
-                                                            <th style="text-align: right;">Credit Balance</th>  
+                                                            <th>Particulars</th>
+                                                            <th>Amount</th>
+                                                            <th>Particulars</th>
+                                                            <th>Amount</th>  
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="myTbody">
-                                                        <!-- <tr class="parent-row"> 
-                                                            <td><button class="toggle-btn">+</button> Mototcar</td>
-                                                            <td>500,000</td>
-                                                            <td>&nbsp;</td>  
-                                                        </tr> 
-                                                        <tr class="child-row"> 
-                                                            <td colspan="3" style="padding: 0;">
-                                                                <table class="table dt-responsive nowrap w-100">
-                                                                    <tr> 
-                                                                        <td>1. Mototcar</td>
-                                                                        <td >300,0</td>
-                                                                        <td >&nbsp;</td>  
-                                                                    </tr>
-                                                                    
-                                                                    <tr> 
-                                                                        <td>2. Mototcar</td>
-                                                                        <td >200,000</td>
-                                                                        <td >&nbsp;</td>  
-                                                                    </tr>
+                                                    <tbody id="myTbody2">
+                                                        <tr>
+                                                            <!-- Left Side -->
+                                                            <td colspan="2">
+                                                                <table class="table table-sm table-bordered mb-0">
+                                                                    <tbody id="myTbodyDr">
+                                                                        <!-- <tr class="parent-row">
+                                                                            <td><button class="toggle-btn">+</button> To Salaries</td>
+                                                                            <td>xx</td>
+                                                                        </tr>
+                                                                        
+                                                                        <tr class="child-row"> 
+                                                                            <td colspan="2" style="padding: 0;">
+                                                                                <table class="table table-sm table-bordered mb-0">
+                                                                                    <tr> 
+                                                                                        <td>1. To Salaries 1</td>
+                                                                                        <td>300,0</td>  
+                                                                                    </tr>                                                                                
+                                                                                    <tr> 
+                                                                                        <td>2. To Salaries 2</td>
+                                                                                        <td>200,000</td> 
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>   -->
+                                                                    </tbody>
                                                                 </table>
                                                             </td>
-                                                        </tr> 
-
-                                                        <tr> 
-                                                            <td><button class="toggle-btn">+</button> Furniture</td>
-                                                            <td >50,000</td>
-                                                            <td >&nbsp;</td>  
-                                                        </tr> 
-                                                        <tr> 
-                                                            <td><button class="toggle-btn">+</button> Trade payables</td>
-                                                            <td >&nbsp;</td>
-                                                            <td >100,000</td>  
-                                                        </tr>      
-                                                        <tr class="child-row"> 
-                                                            <td colspan="3">
-                                                                <table class="table dt-responsive nowrap w-100">
-                                                                    <tr> 
-                                                                        <td>1. Trade payables</td>
-                                                                        <td >&nbsp;</td>
-                                                                        <td >30,000</td>  
-                                                                    </tr>
-                                                                    
-                                                                    <tr> 
-                                                                        <td>2. Trade payables</td>
-                                                                        <td >&nbsp;</td>
-                                                                        <td >70,000</td>  
-                                                                    </tr>
+                                                            <!-- Right Side -->
+                                                            <td colspan="2">
+                                                                <table class="table table-sm table-bordered mb-0">
+                                                                    <tbody id="myTbodyCr">
+                                                                        <!-- <tr>
+                                                                            <td><button class="toggle-btn">+</button>By Internal Received</td>
+                                                                            <td>xx</td>
+                                                                        </tr>
+                                                                        
+                                                                        <tr class="child-row"> 
+                                                                            <td colspan="2" style="padding: 0;">
+                                                                                <table class="table table-sm table-bordered mb-0">
+                                                                                    <tr> 
+                                                                                        <td>1. By Internal Received 1</td>
+                                                                                        <td>300,0</td>  
+                                                                                    </tr>                                                                                
+                                                                                    <tr> 
+                                                                                        <td>2. By Internal Received 2</td>
+                                                                                        <td>200,000</td> 
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>  -->
+                                                                    </tbody>
                                                                 </table>
                                                             </td>
-                                                        </tr>-->                                                   
+                                                        </tr>                                                   
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -272,7 +277,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
     <?php include('common/footer_js_dt1.php'); ?>        
     <!-- end Footer JS -->
     
-    <script src="trial_balance/function.js?d=<?=date('Ymdhis')?>"></script>
+    <script src="profit_loss/function.js?d=<?=date('Ymdhis')?>"></script>
 
 </body> 
 </html>

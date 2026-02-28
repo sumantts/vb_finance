@@ -88,6 +88,13 @@
                             <i class="uil-money-bill-stack"></i>
                             <span>Trial Balance</span>
                         </a>
+                    </li>                     
+
+                    <li class="side-nav-item <?php if($p == 'profit-loss'){?>menuitem-active<?php } ?>">
+                        <a href="?p=profit-loss" class="side-nav-link">
+                            <i class="uil-money-bill-stack"></i>
+                            <span>Profit and Loss</span>
+                        </a>
                     </li> 
 
                 </ul>
