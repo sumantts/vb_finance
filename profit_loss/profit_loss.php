@@ -11,7 +11,19 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
     }
     .toggle-btn {
         cursor: pointer;
-    }
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #f5f5f5;
+        border: 1px solid #dcdcdc;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        cursor: pointer;
+    } 
+
+    
     </style>
     <!-- Begin page -->
     <div class="wrapper">
@@ -100,13 +112,13 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                         <div class="tab-pane show active" id="buttons-table-preview">
                                             <div class="table-responsive"> 
 
-                                                <table id="trial_balance" class="table table-sm table-centered mb-0">
+                                                <table id="trial_balance" class="table table-sm table-bordered mb-0">
                                                     <thead>
                                                         <tr> 
-                                                            <th>Particulars</th>
-                                                            <th>Amount</th>
-                                                            <th>Particulars</th>
-                                                            <th>Amount</th>  
+                                                            <th style="text-align:center; width:350px;">Particulars</th>
+                                                            <th style="text-align:center; width:150px;">Amount</th>
+                                                            <th style="text-align:center; width:350px;">Particulars</th>
+                                                            <th style="text-align:center; width:150px;">Amount</th>  
                                                         </tr>
                                                     </thead>
                                                     <tbody id="myTbody2">

@@ -11,6 +11,50 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
     }
     .toggle-btn {
         cursor: pointer;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #f5f5f5;
+        border: 1px solid #dcdcdc;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .balance-table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .balance-table td,
+    .balance-table th {
+        padding: 8px;
+    }
+
+    /* Column widths */
+    .balance-table td:nth-child(1),
+    .balance-table th:nth-child(1) {
+        width: 50%;
+    }
+
+    .balance-table td:nth-child(2),
+    .balance-table th:nth-child(2) {
+        width: 25%;
+        text-align: right;
+    }
+
+    .balance-table td:nth-child(3),
+    .balance-table th:nth-child(3) {
+        width: 25%;
+        text-align: right;
+    }
+
+    .balance-table td:nth-child(2),
+    .balance-table td:nth-child(3){
+        text-align:right;
+        white-space:nowrap;
     }
     </style>
     <!-- Begin page -->
@@ -100,7 +144,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                         <div class="tab-pane show active" id="buttons-table-preview">
                                             <div class="table-responsive"> 
 
-                                                <table id="trial_balance" class="table table-sm table-bordered mb-0">
+                                                <table id="trial_balance" class="table table-sm table-bordered mb-0 balance-table">
                                                     <thead>
                                                         <tr> 
                                                             <th>Ledger name</th>

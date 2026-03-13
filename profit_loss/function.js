@@ -34,8 +34,8 @@ $('#myForm2').on('submit', function(){
                     //Left side Dr 
                     if($nature == '2' && parseFloat($c_debit_balance) > 0){
                         $myTbodyDr += '<tr class="parent-row">';
-                            $myTbodyDr += '<td><button class="toggle-btn">+</button> '+$category_name+'</td>';
-                            $myTbodyDr += '<td>'+$c_debit_balance+'</td>';
+                            $myTbodyDr += '<td style="width:350px;"><button class="toggle-btn ">+</button> '+$category_name+'</td>';
+                            $myTbodyDr += '<td style="text-align:right; width:150px;">'+$c_debit_balance+'</td>';
                         $myTbodyDr += '</tr>';
                         
                         if($sub_categories.length > 0){
@@ -48,8 +48,8 @@ $('#myForm2').on('submit', function(){
                                             $sub_c_credit_balance = $sub_categories[$j].credit_balance;
                                             if(parseFloat($sub_c_debit_balance) > 0){
                                                 $myTbodyDr += '<tr>'; 
-                                                    $myTbodyDr += '<td>'+$sub_category_name+'</td>';
-                                                    $myTbodyDr += '<td>'+$sub_c_debit_balance+'</td>';  
+                                                    $myTbodyDr += '<td style="width:350px;">'+$sub_category_name+'</td>';
+                                                    $myTbodyDr += '<td style="text-align:right; width:150px;">'+$sub_c_debit_balance+'</td>';  
                                                 $myTbodyDr += '</tr>';
                                             } 
                                         }//end loop j
@@ -62,8 +62,8 @@ $('#myForm2').on('submit', function(){
                     // Right side Dr 
                     if($nature == '1' && parseFloat($c_credit_balance) > 0){
                         $myTbodyCr += '<tr class="parent-row">';
-                            $myTbodyCr += '<td><button class="toggle-btn">+</button> '+$category_name+'</td>';
-                            $myTbodyCr += '<td>'+$c_credit_balance+'</td>';
+                            $myTbodyCr += '<td style="width:350px;"><button class="toggle-btn ">+</button> '+$category_name+'</td>';
+                            $myTbodyCr += '<td style="text-align:right; width:150px;">'+$c_credit_balance+'</td>';
                         $myTbodyCr += '</tr>';
                         
                         if($sub_categories.length > 0){
@@ -76,8 +76,8 @@ $('#myForm2').on('submit', function(){
                                             $sub_c_credit_balance = $sub_categories[$j].credit_balance;
                                             if(parseFloat($sub_c_credit_balance) > 0){
                                                 $myTbodyCr += '<tr>'; 
-                                                    $myTbodyCr += '<td>'+$sub_category_name+'</td>';
-                                                    $myTbodyCr += '<td>'+$sub_c_credit_balance+'</td>';  
+                                                    $myTbodyCr += '<td style="width:350px;">'+$sub_category_name+'</td>';
+                                                    $myTbodyCr += '<td style="text-align:right; width:150px;">'+$sub_c_credit_balance+'</td>';  
                                                 $myTbodyCr += '</tr>'; 
                                             }
                                         }//end loop j

@@ -11,6 +11,16 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
     }
     .toggle-btn {
         cursor: pointer;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #f5f5f5;
+        border: 1px solid #dcdcdc;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        cursor: pointer;
     }
     </style>
     <!-- Begin page -->
