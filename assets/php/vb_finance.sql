@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2026 at 05:29 AM
+-- Generation Time: Mar 13, 2026 at 06:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -76,6 +76,7 @@ CREATE TABLE `category` (
   `category_name` varchar(255) NOT NULL,
   `nature` tinyint(1) NOT NULL COMMENT '0=Select 1=Income 2=Expense',
   `part_of_plbs` tinyint(1) NOT NULL COMMENT '0=select 1=pl 2=bs',
+  `asset_liab` tinyint(1) NOT NULL DEFAULT 0,
   `opening_balance` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -83,25 +84,25 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`c_id`, `co_id`, `parent_c_id`, `category_name`, `nature`, `part_of_plbs`, `opening_balance`) VALUES
-(1, 2, 0, 'Asset', 1, 1, 0.00),
-(2, 2, 1, 'Cash and Cash Equivalents', 0, 0, 1000.00),
-(3, 2, 1, 'Inventory', 0, 0, 1000.00),
-(4, 2, 1, 'Prepaid Expenses', 0, 0, 1000.00),
-(5, 2, 1, 'Accounts Receivable', 0, 0, 1000.00),
-(6, 2, 1, 'Property, Plant, and Equipment (PPE)', 0, 0, 1000.00),
-(7, 2, 1, 'Investments', 0, 0, 1000.00),
-(8, 2, 1, 'Intangible Assets', 0, 0, 1000.00),
-(9, 1, 0, 'Asset', 1, 1, 0.00),
-(10, 1, 9, 'Current Assets (Short-Term)', 0, 0, 1000.00),
-(11, 2, 0, 'Liabilities', 2, 1, 0.00),
-(12, 2, 11, 'Accounts payable', 0, 0, 1000.00),
-(13, 2, 0, 'PL Expense Category', 2, 1, 0.00),
-(14, 2, 13, 'PL Sub category', 0, 0, 100.00),
-(15, 2, 0, 'PL Income category', 1, 1, 0.00),
-(16, 2, 15, 'PL Income Subcategory', 0, 0, 1000.00),
-(17, 2, 13, 'PL Sub category 1', 0, 0, 1000.00),
-(18, 2, 15, 'PL Income Subcategory 2', 0, 0, 1000.00);
+INSERT INTO `category` (`c_id`, `co_id`, `parent_c_id`, `category_name`, `nature`, `part_of_plbs`, `asset_liab`, `opening_balance`) VALUES
+(1, 2, 0, 'Asset', 1, 1, 1, 0.00),
+(2, 2, 1, 'Cash and Cash Equivalents', 0, 0, 0, 1000.00),
+(3, 2, 1, 'Inventory', 0, 0, 0, 1000.00),
+(4, 2, 1, 'Prepaid Expenses', 0, 0, 0, 1000.00),
+(5, 2, 1, 'Accounts Receivable', 0, 0, 0, 1000.00),
+(6, 2, 1, 'Property, Plant, and Equipment (PPE)', 0, 0, 0, 1000.00),
+(7, 2, 1, 'Investments', 0, 0, 0, 1000.00),
+(8, 2, 1, 'Intangible Assets', 0, 0, 0, 1000.00),
+(9, 1, 0, 'Asset', 1, 1, 0, 0.00),
+(10, 1, 9, 'Current Assets (Short-Term)', 0, 0, 0, 1000.00),
+(11, 2, 0, 'Liabilities', 2, 1, 2, 0.00),
+(12, 2, 11, 'Accounts payable', 0, 0, 0, 1000.00),
+(13, 2, 0, 'PL Expense Category', 2, 1, 2, 0.00),
+(14, 2, 13, 'PL Sub category', 0, 0, 0, 100.00),
+(15, 2, 0, 'PL Income category', 1, 1, 1, 0.00),
+(16, 2, 15, 'PL Income Subcategory', 0, 0, 0, 1000.00),
+(17, 2, 13, 'PL Sub category 1', 0, 0, 0, 1000.00),
+(18, 2, 15, 'PL Income Subcategory 2', 0, 0, 0, 1000.00);
 
 -- --------------------------------------------------------
 

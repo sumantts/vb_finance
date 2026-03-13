@@ -19,13 +19,14 @@
 		$parent_c_id = $_POST['parent_c_id'];  
 		$category_name = $_POST['category_name'];  
 		$nature = $_POST['nature']; 
-		$part_of_plbs = $_POST['part_of_plbs']; 
+		$part_of_plbs = $_POST['part_of_plbs'];  
+		$asset_liab = $_POST['asset_liab'];
 		$opening_balance = $_POST['opening_balance']; 
 
 		$status = 1;
 
 		if($serial_no > 0){
-			$sql1 = "UPDATE category SET category_name = '" .$category_name. "', parent_c_id = '" .$parent_c_id. "', nature = '" .$nature. "', part_of_plbs = '" .$part_of_plbs. "', opening_balance = '" .$opening_balance. "' WHERE c_id = '".$serial_no."'";
+			$sql1 = "UPDATE category SET category_name = '" .$category_name. "', parent_c_id = '" .$parent_c_id. "', nature = '" .$nature. "', part_of_plbs = '" .$part_of_plbs. "', asset_liab = '" .$asset_liab. "', opening_balance = '" .$opening_balance. "' WHERE c_id = '".$serial_no."'";
 			$result1 = $con->query($sql1);
 			$error_message = 'Data updated successfully';
 		}else{
@@ -37,7 +38,7 @@
 				$error_message = 'Category name already exists';
 			} else {
 				$status = true;
-				$sql2 = "INSERT INTO category (co_id, parent_c_id, category_name, nature, part_of_plbs, opening_balance) VALUES ('" .$co_id. "', '" .$parent_c_id. "', '".$category_name."', '" .$nature."', '" .$part_of_plbs."', '" .$opening_balance."')";
+				$sql2 = "INSERT INTO category (co_id, parent_c_id, category_name, nature, part_of_plbs, asset_liab, opening_balance) VALUES ('" .$co_id. "', '" .$parent_c_id. "', '".$category_name."', '" .$nature."', '" .$part_of_plbs."', '" .$asset_liab."', '" .$opening_balance."')";
 				$result2 = $con->query($sql2);
 				$error_message = 'Data inserted successfully';
 			}
@@ -69,7 +70,8 @@
 				$parent_c_id = $row['parent_c_id'];
 				$category_name = $row['category_name']; 
 				$nature = $row['nature']; 
-				$part_of_plbs = $row['part_of_plbs']; 
+				$part_of_plbs = $row['part_of_plbs'];  
+				$asset_liab = $row['asset_liab']; 
 				$opening_balance = $row['opening_balance']; 
 
 				$nature_txt = '';
@@ -84,6 +86,13 @@
 					$part_of_plbs_txt = 'Profit and Loss';
 				}else if($part_of_plbs == 2){
 					$part_of_plbs_txt = 'Balance Sheet';
+				}else{}
+
+				$asset_liab_txt = '';
+				if($asset_liab == 1){
+					$asset_liab_txt = 'Assets';
+				}else if($asset_liab == 2){
+					$asset_liab_txt = 'Liabilities';
 				}else{}
 
 				if($c_id != ''){
@@ -104,9 +113,10 @@
 					$data[1] = $p_category_name; 
 					$data[2] = $category_name; 
 					$data[3] = $nature_txt;	
-					$data[4] = $part_of_plbs_txt;	
-					$data[5] = $opening_balance;	
-					$data[6] = $action_html;				
+					$data[4] = $part_of_plbs_txt;
+					$data[5] = $asset_liab_txt;	
+					$data[6] = $opening_balance;	
+					$data[7] = $action_html;				
 					array_push($mainData, $data);
 					$slno++;
 				}
@@ -126,6 +136,7 @@
 		$category_name = '';
 		$nature = '';
 		$part_of_plbs = '';
+		$asset_liab = '';
 		$opening_balance = '';
 		
 		$sql = "SELECT * FROM category WHERE c_id = '" .$serial_no. "' ";
@@ -137,7 +148,8 @@
 			$category_name = $row['category_name'];
 			
 			$nature = $row['nature']; 
-			$part_of_plbs = $row['part_of_plbs']; 
+			$part_of_plbs = $row['part_of_plbs'];  
+			$asset_liab = $row['asset_liab']; 
 			$opening_balance = $row['opening_balance']; 
 		}
 
@@ -147,6 +159,7 @@
 		$return_array['category_name'] = $category_name;
 		$return_array['nature'] = $nature;
 		$return_array['part_of_plbs'] = $part_of_plbs;
+		$return_array['asset_liab'] = $asset_liab;
 		$return_array['opening_balance'] = $opening_balance;
     	echo json_encode($return_array);
 	}//function end

@@ -7,7 +7,8 @@ $('#myForm').on('submit', function(){
 
     
     $nature = $('#nature').val();  
-    $part_of_plbs = $('#part_of_plbs').val();  
+    $part_of_plbs = $('#part_of_plbs').val();    
+    $asset_liab = $('#asset_liab').val();
     $opening_balance = $('#opening_balance').val();  
 
     $('#message_text').html('');
@@ -18,7 +19,7 @@ $('#myForm').on('submit', function(){
         type: "POST",
         url: "category/function.php",
         dataType: "json",
-        data: { fn: "saveFormData", serial_no: $serial_no, category_name: $category_name, parent_c_id: $parent_c_id, nature: $nature, part_of_plbs: $part_of_plbs, opening_balance: $opening_balance }
+        data: { fn: "saveFormData", serial_no: $serial_no, category_name: $category_name, parent_c_id: $parent_c_id, nature: $nature, part_of_plbs: $part_of_plbs, asset_liab: $asset_liab, opening_balance: $opening_balance }
     })
     .done(function( res ) {
         //$res1 = JSON.parse(res);
@@ -73,6 +74,7 @@ function editTabledata(sl){
             $('#category_name').val($res1.category_name); 
             $('#nature').val($res1.nature).trigger('change');
             $('#part_of_plbs').val($res1.part_of_plbs).trigger('change');
+            $('#asset_liab').val($res1.asset_liab).trigger('change');
             $('#opening_balance').val($res1.opening_balance); 
         }        
     });//end ajax
@@ -140,18 +142,22 @@ $('#parent_c_id').on('change', function(){
     if(parseInt($parent_c_id) > 0){
         $('#div_nature').removeClass('d-block');
         $('#div_plbs').removeClass('d-block');
+        $('#div_al').removeClass('d-block');
         $('#div_opn_bal').removeClass('d-none');
 
         $('#div_nature').addClass('d-none');
         $('#div_plbs').addClass('d-none');
+        $('#div_al').addClass('d-none');
         $('#div_opn_bal').addClass('d-block');
     }else{
         $('#div_nature').removeClass('d-none');
         $('#div_plbs').removeClass('d-none');
+        $('#div_al').removeClass('d-none');
         $('#div_opn_bal').removeClass('d-block');
 
         $('#div_nature').addClass('d-block');
         $('#div_plbs').addClass('d-block');
+        $('#div_al').addClass('d-block');
         $('#div_opn_bal').addClass('d-none');
     }
 })

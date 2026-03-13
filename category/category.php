@@ -59,6 +59,7 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                                         <th>Category Name</th> 
                                                         <th>Nature</th>
                                                         <th>P/L or B/S</th>
+                                                        <th>Assets or Liabilities</th>
                                                         <th>Opening Balance</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -133,6 +134,15 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                         <option value='0'>Select</option>
                                         <option value='1'>Profit and Loss</option>
                                         <option value='2'>Balance Sheet</option>
+                                    </select>
+                                </div>   
+
+                                <div class="mb-2 d-block" id="div_al">
+                                    <label for="asset_liab" class="form-label">Assets or Liabilities</label>
+                                    <select class="form-select" id="asset_liab" name="asset_liab">
+                                        <option value='0'>Select</option>
+                                        <option value='1'>Assets</option>
+                                        <option value='2'>Liabilities</option>
                                     </select>
                                 </div> 
 
