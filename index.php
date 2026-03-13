@@ -55,6 +55,11 @@
 		include('profit_loss/profit_loss.php');
 		break; 
 		
+		case 'balance-sheet':
+		$title = "Balance Bheet";
+		include('balance_sheet/balance_sheet.php');
+		break; 
+		
 						
 		default:
 		include('signin/signin.php');

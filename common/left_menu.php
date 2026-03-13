@@ -95,6 +95,13 @@
                             <i class="uil-money-bill-stack"></i>
                             <span>Profit and Loss</span>
                         </a>
+                    </li>                      
+
+                    <li class="side-nav-item <?php if($p == 'balance-sheet'){?>menuitem-active<?php } ?>">
+                        <a href="?p=balance-sheet" class="side-nav-link">
+                            <i class="uil-money-bill-stack"></i>
+                            <span>Balance Bheet</span>
+                        </a>
                     </li> 
 
                 </ul>
