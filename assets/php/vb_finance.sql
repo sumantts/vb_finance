@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2026 at 06:19 PM
+-- Generation Time: Mar 13, 2026 at 09:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -76,7 +76,7 @@ CREATE TABLE `category` (
   `category_name` varchar(255) NOT NULL,
   `nature` tinyint(1) NOT NULL COMMENT '0=Select 1=Income 2=Expense',
   `part_of_plbs` tinyint(1) NOT NULL COMMENT '0=select 1=pl 2=bs',
-  `asset_liab` tinyint(1) NOT NULL DEFAULT 0,
+  `asset_liab` tinyint(1) NOT NULL DEFAULT 0 COMMENT '1=Assets 2=Liabilities',
   `opening_balance` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

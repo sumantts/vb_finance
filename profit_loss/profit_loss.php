@@ -5,23 +5,102 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
 
 <body> 
     <style>
-    .child-row {
-        display: none;
-        background: #f9f9f9;
-    }
-    .toggle-btn {
-        cursor: pointer;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: #f5f5f5;
-        border: 1px solid #dcdcdc;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        cursor: pointer;
-    } 
+        
+
+.balance-container{
+display:flex;
+gap:20px;
+}
+
+.balance-column{
+width:50%;
+}
+
+.balance-table{
+width:100%;
+border-collapse:collapse;
+table-layout:fixed;
+background:white;
+}
+
+.balance-table th{
+background:#f1f3f6;
+border:1px solid #dcdcdc;
+padding:8px;
+font-weight:600;
+text-align:left;
+}
+
+.balance-table td{
+border:1px solid #e4e6eb;
+padding:8px;
+}
+
+.amount{
+text-align:right;
+font-weight:500;
+}
+
+.parent-row{
+font-weight:600;
+background:#fafafa;
+}
+
+/* child rows hidden initially */
+.child-row{
+display:none;
+}
+
+.child-row td:first-child{
+padding-left:35px;
+}
+
+.balance-table tbody tr:hover{
+background:#f7f9fc;
+}
+
+/* Expand Button */
+
+.expand-btn{
+width:18px;
+height:18px;
+border:1px solid #cfd6dc;
+border-radius:4px;
+background:white;
+display:inline-block;
+position:relative;
+margin-right:6px;
+cursor:pointer;
+}
+
+/* horizontal */
+.expand-btn::before{
+content:"";
+position:absolute;
+width:10px;
+height:2px;
+background:#333;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+/* vertical */
+.expand-btn::after{
+content:"";
+position:absolute;
+width:2px;
+height:10px;
+background:#333;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+/* minus */
+.expand-btn.active::after{
+display:none;
+}
 
     
     </style>
@@ -110,75 +189,71 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                      </div> -->
                                     <div class="tab-content">
                                         <div class="tab-pane show active" id="buttons-table-preview">
-                                            <div class="table-responsive"> 
 
-                                                <table id="trial_balance" class="table table-sm table-bordered mb-0">
+                                        <div class="balance-container">
+
+                                            <!-- Left Side -->
+                                            <div class="balance-column">
+
+                                                <table class="balance-table">
                                                     <thead>
-                                                        <tr> 
-                                                            <th style="text-align:center; width:350px;">Particulars</th>
-                                                            <th style="text-align:center; width:150px;">Amount</th>
-                                                            <th style="text-align:center; width:350px;">Particulars</th>
-                                                            <th style="text-align:center; width:150px;">Amount</th>  
+                                                        <tr>
+                                                            <th>Particulars</th>
+                                                            <th>Amount</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="myTbody2">
-                                                        <tr>
-                                                            <!-- Left Side -->
-                                                            <td colspan="2">
-                                                                <table class="table table-sm table-bordered mb-0">
-                                                                    <tbody id="myTbodyDr">
-                                                                        <!-- <tr class="parent-row">
-                                                                            <td><button class="toggle-btn">+</button> To Salaries</td>
-                                                                            <td>xx</td>
-                                                                        </tr>
-                                                                        
-                                                                        <tr class="child-row"> 
-                                                                            <td colspan="2" style="padding: 0;">
-                                                                                <table class="table table-sm table-bordered mb-0">
-                                                                                    <tr> 
-                                                                                        <td>1. To Salaries 1</td>
-                                                                                        <td>300,0</td>  
-                                                                                    </tr>                                                                                
-                                                                                    <tr> 
-                                                                                        <td>2. To Salaries 2</td>
-                                                                                        <td>200,000</td> 
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </td>
-                                                                        </tr>   -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </td>
-                                                            <!-- Right Side -->
-                                                            <td colspan="2">
-                                                                <table class="table table-sm table-bordered mb-0">
-                                                                    <tbody id="myTbodyCr">
-                                                                        <!-- <tr>
-                                                                            <td><button class="toggle-btn">+</button>By Internal Received</td>
-                                                                            <td>xx</td>
-                                                                        </tr>
-                                                                        
-                                                                        <tr class="child-row"> 
-                                                                            <td colspan="2" style="padding: 0;">
-                                                                                <table class="table table-sm table-bordered mb-0">
-                                                                                    <tr> 
-                                                                                        <td>1. By Internal Received 1</td>
-                                                                                        <td>300,0</td>  
-                                                                                    </tr>                                                                                
-                                                                                    <tr> 
-                                                                                        <td>2. By Internal Received 2</td>
-                                                                                        <td>200,000</td> 
-                                                                                    </tr>
-                                                                                </table>
-                                                                            </td>
-                                                                        </tr>  -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </td>
-                                                        </tr>                                                   
+
+                                                    <tbody id="myTbodyDr">
+                                                        <!-- <tr class="parent-row">
+                                                            <td><span class="expand-btn"></span>Capital Account</td>
+                                                            <td class="amount">15000</td>
+                                                        </tr>
+
+                                                        <tr class="child-row">
+                                                            <td>Owner Capital</td>
+                                                            <td class="amount">10000</td>
+                                                        </tr>
+
+                                                        <tr class="child-row">
+                                                            <td>Partner Capital</td>
+                                                            <td class="amount">5000</td>
+                                                        </tr>  -->
                                                     </tbody>
                                                 </table>
                                             </div>
+
+
+                                            <!-- Right Side -->
+                                            <div class="balance-column">
+                                                <table class="balance-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Particulars</th>
+                                                            <th>Amount</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody id="myTbodyCr">
+                                                        <!-- <tr class="parent-row">
+                                                            <td><span class="expand-btn"></span>Current Assets</td>
+                                                            <td class="amount">20000</td>
+                                                        </tr>
+
+                                                        <tr class="child-row">
+                                                            <td>Cash in Hand</td>
+                                                            <td class="amount">5000</td>
+                                                        </tr>
+
+                                                        <tr class="child-row">
+                                                            <td>Bank Balance</td>
+                                                            <td class="amount">15000</td>
+                                                        </tr>  -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        
+
                                         </div> <!-- end preview-->
                                         
                                         

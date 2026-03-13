@@ -5,57 +5,94 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
 
 <body> 
     <style>
-    .child-row {
-        display: none;
-        background: #f9f9f9;
-    }
-    .toggle-btn {
-        cursor: pointer;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: #f5f5f5;
-        border: 1px solid #dcdcdc;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        cursor: pointer;
-    }
+        .balance-sheet {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
 
-    .balance-table {
-        width: 100%;
-        table-layout: fixed;
-    }
+.balance-sheet th,
+.balance-sheet td {
+    border: 1px solid #e3e6ea;
+    padding: 8px 10px;
+}
 
-    .balance-table td,
-    .balance-table th {
-        padding: 8px;
-    }
+/* Column width */
+.balance-sheet th:nth-child(1),
+.balance-sheet td:nth-child(1){
+    width:55%;
+}
 
-    /* Column widths */
-    .balance-table td:nth-child(1),
-    .balance-table th:nth-child(1) {
-        width: 50%;
-    }
+.balance-sheet th:nth-child(2),
+.balance-sheet td:nth-child(2){
+    width:22.5%;
+    text-align:right;
+}
 
-    .balance-table td:nth-child(2),
-    .balance-table th:nth-child(2) {
-        width: 25%;
-        text-align: right;
-    }
+.balance-sheet th:nth-child(3),
+.balance-sheet td:nth-child(3){
+    width:22.5%;
+    text-align:right;
+}
 
-    .balance-table td:nth-child(3),
-    .balance-table th:nth-child(3) {
-        width: 25%;
-        text-align: right;
-    }
+/* Parent row */
+.parent-row{
+    font-weight:600;
+    background:#fafafa;
+}
 
-    .balance-table td:nth-child(2),
-    .balance-table td:nth-child(3){
-        text-align:right;
-        white-space:nowrap;
-    }
+/* Child rows hidden initially */
+.child-row{
+    display:none;
+}
+
+.child-row td:first-child{
+    padding-left:35px;
+}
+
+.expand-btn{
+    width:20px;
+    height:20px;
+    border:1px solid #cfd6dc;
+    border-radius:4px;
+    background:#fff;
+    cursor:pointer;
+    position:relative;
+    display:inline-block;
+    margin-right:6px;
+}
+
+/* horizontal line */
+.expand-btn::before{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:2px;
+    background:#333;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+/* vertical line */
+.expand-btn::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:10px;
+    background:#333;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+/* minus state */
+.expand-btn.active::after{
+    display:none;
+}
+
     </style>
     <!-- Begin page -->
     <div class="wrapper">
@@ -144,67 +181,68 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
                                         <div class="tab-pane show active" id="buttons-table-preview">
                                             <div class="table-responsive"> 
 
-                                                <table id="trial_balance" class="table table-sm table-bordered mb-0 balance-table">
-                                                    <thead>
-                                                        <tr> 
-                                                            <th>Ledger name</th>
-                                                            <th style="text-align: right;">Debit Balance</th>
-                                                            <th style="text-align: right;">Credit Balance</th>  
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="myTbody">
-                                                        <!-- <tr class="parent-row"> 
-                                                            <td><button class="toggle-btn">+</button> Mototcar</td>
-                                                            <td>500,000</td>
-                                                            <td>&nbsp;</td>  
-                                                        </tr> 
-                                                        <tr class="child-row"> 
-                                                            <td colspan="3" style="padding: 0;">
-                                                                <table class="table dt-responsive nowrap w-100">
-                                                                    <tr> 
-                                                                        <td>1. Mototcar</td>
-                                                                        <td >300,0</td>
-                                                                        <td >&nbsp;</td>  
-                                                                    </tr>
-                                                                    
-                                                                    <tr> 
-                                                                        <td>2. Mototcar</td>
-                                                                        <td >200,000</td>
-                                                                        <td >&nbsp;</td>  
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr> 
+                                            <table class="balance-sheet">
+                                            <thead>
+                                            <tr>
+                                            <th>Ledger name</th>
+                                            <th>Debit Balance</th>
+                                            <th>Credit Balance</th>
+                                            </tr>
+                                            </thead>
 
-                                                        <tr> 
-                                                            <td><button class="toggle-btn">+</button> Furniture</td>
-                                                            <td >50,000</td>
-                                                            <td >&nbsp;</td>  
-                                                        </tr> 
-                                                        <tr> 
-                                                            <td><button class="toggle-btn">+</button> Trade payables</td>
-                                                            <td >&nbsp;</td>
-                                                            <td >100,000</td>  
-                                                        </tr>      
-                                                        <tr class="child-row"> 
-                                                            <td colspan="3">
-                                                                <table class="table dt-responsive nowrap w-100">
-                                                                    <tr> 
-                                                                        <td>1. Trade payables</td>
-                                                                        <td >&nbsp;</td>
-                                                                        <td >30,000</td>  
-                                                                    </tr>
-                                                                    
-                                                                    <tr> 
-                                                                        <td>2. Trade payables</td>
-                                                                        <td >&nbsp;</td>
-                                                                        <td >70,000</td>  
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>-->                                                   
-                                                    </tbody>
-                                                </table>
+                                            <tbody id="myTbody">
+
+                                                <!-- <tr class="parent-row">
+                                                    <td>
+                                                        <div class="ledger-name">
+                                                        <span class="expand-btn"></span>
+                                                        Asset
+                                                        </div>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>28604.64</td>
+                                                </tr>
+
+                                                <tr class="child-row">
+                                                    <td>Cash Account</td>
+                                                    <td></td>
+                                                    <td>12000</td>
+                                                </tr>
+
+                                                <tr class="child-row">
+                                                    <td>Bank Account</td>
+                                                    <td></td>
+                                                    <td>16604.64</td>
+                                                </tr>
+
+                                                
+
+                                                <tr class="parent-row">
+                                                    <td>
+                                                        <div class="ledger-name">
+                                                        <span class="expand-btn"></span>
+                                                        Asset
+                                                        </div>
+                                                    </td>
+                                                    <td></td>
+                                                    <td>28604.64</td>
+                                                </tr>
+
+                                                <tr class="child-row">
+                                                    <td>Cash Account</td>
+                                                    <td></td>
+                                                    <td>12000</td>
+                                                </tr>
+
+                                                <tr class="child-row">
+                                                    <td>Bank Account</td>
+                                                    <td></td>
+                                                    <td>16604.64</td>
+                                                </tr> -->
+
+                                            </tbody>
+                                            </table>
+                                            
                                             </div>
                                         </div> <!-- end preview-->
                                         
