@@ -44,6 +44,27 @@
 				$co_id = $row2['co_id'];
 				$_SESSION["co_id"] = $co_id;
 			}
+
+
+
+			$sql3 = "SELECT * FROM accounting_year_master WHERE last_selected = '1' ";
+			$result3 = $con->query($sql3);
+
+			if ($result3->num_rows > 0) {
+				$row3 = $result3->fetch_array();
+				$ac_year = $row3['ac_year']; 
+				$ac_year_name = $row3['ac_year_name'];
+				$from_date = $row3['from_date'];
+				$to_date = $row3['to_date'];
+				$last_selected = $row3['last_selected'];
+
+				$_SESSION["ac_year"] = $ac_year;
+				$_SESSION["ac_year_name"] = $ac_year_name;
+				$_SESSION["from_date"] = $from_date;
+				$_SESSION["to_date"] = $to_date;
+				$_SESSION["last_selected"] = $last_selected;			
+			}
+			
 		}else{
 			$status = false;
 			$message = 'Wrong Username or Password'; 	

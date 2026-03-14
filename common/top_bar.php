@@ -119,8 +119,8 @@
                     </li>
 
                      <li class="dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">        
-                            <img src="assets/images/flags/india.jpg" alt="user-image" class="me-0 me-sm-1" height="12">                    
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"> 
+                            <i class="ri-building-line font-22"></i>               
                             <span class="align-middle d-none d-lg-inline-block" id="selected_company">Company A</span><i class="mdi mdi-chevron-down d-block d-sm-inline-block align-middle"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated" id="company_list">                            
@@ -130,8 +130,8 @@
 
                      <li class="dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">    
-                            <i class="uil-money-bill-stack"></i>                
-                            <span class="align-middle d-none d-lg-inline-block" id="accounting_year">Accounting Year</span><i class="mdi mdi-chevron-down d-block d-sm-inline-block align-middle"></i>
+                            <i class="ri-calendar-check-line font-22"></i>                
+                            <span class="align-middle d-none d-lg-inline-block" id="selected_ac_yr">Accounting Year</span><i class="mdi mdi-chevron-down d-block d-sm-inline-block align-middle"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated" id="accounting_year_list">                            
                             <a href="javascript:void(0);" class="dropdown-item"> <span class="align-middle">2025-2026</span> </a> 

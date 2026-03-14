@@ -67,7 +67,7 @@
         }//end fun
 
         function populateAcYearDD(){
-            $text = '';
+            $text_acyr = '';
             $.ajax({
                 type: "POST",
                 url: "company/function.php",
@@ -77,31 +77,30 @@
             .done(function( res ) { 
                 //console.log(JSON.stringify(res));
                 if(res.status == true){
-                    $companies = res.data;
+                    $ac_years = res.data;
                     
-                    if($companies.length > 0){
+                    if($ac_years.length > 0){
                         $sl = 1;
-                        $s_company_name = '';
-                        for($c = 0; $c < $companies.length; $c++){ 
-                            $text += '<a href="javascript:void(0);" class="dropdown-item" onClick="selectCompany(\''+$companies[$c].co_id+'\',\''+$companies[$c].company_name+'\')">';
-                                $text += '<span class="align-middle">'+$companies[$c].company_name+'</span>';
-                            $text += '</a>';
+                        $s_ac_year_name = '';
+                        for($c = 0; $c < $ac_years.length; $c++){ 
+                            $text_acyr += '<a href="javascript:void(0);" class="dropdown-item" onClick="selectAcYear(\''+$ac_years[$c].ac_year+'\',\''+$ac_years[$c].ac_year_name+'\')">';
+                                $text_acyr += '<span class="align-middle">'+$ac_years[$c].ac_year_name+'</span>';
+                            $text_acyr += '</a>';
                             $sl++;
 
-                            if($companies[$c].last_selected == '1'){
-                                $s_company_name = $companies[$c].company_name;
+                            if($ac_years[$c].last_selected == '1'){
+                                $s_ac_year_name = $ac_years[$c].ac_year_name;
                             }
                         } 
-                        $('#company_list').html($text);
-                        $('#selected_company').html($s_company_name);
+                        $('#accounting_year_list').html($text_acyr);
+                        $('#selected_ac_yr').html($s_ac_year_name);
                     }    
                 }  
             });//end ajax 
         }//end fun
 
-        function selectCompany(co_id, company_name){
-            console.log('co_id: '+co_id+' company_name: '+ company_name);
-            
+        //Company Dropdown
+        function selectCompany(co_id, company_name){            
             $.ajax({
                 type: "POST",
                 url: "company/function.php",
@@ -109,13 +108,27 @@
                 data: { fn: "updateSelectedCompany", co_id_key: co_id}
             })
             .done(function( res ) { 
-                //console.log(JSON.stringify(res));
                 if(res.status == true){
                     location.reload();
                     populateCompanyDD();                     
                 }  
             });//end ajax 
+        }//end fun
 
+        // Accounting Year
+        function selectAcYear(ac_year, ac_year_name){            
+            $.ajax({
+                type: "POST",
+                url: "company/function.php",
+                dataType: "json",
+                data: { fn: "updateSelectedAcYr", ac_year_id: ac_year}
+            })
+            .done(function( res ) { 
+                if(res.status == true){
+                    location.reload();
+                    populateAcYearDD();                     
+                }  
+            });//end ajax 
         }//end fun
 
         $(document).ready(function () { 

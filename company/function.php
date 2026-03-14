@@ -169,7 +169,7 @@
 		$status = true;
 		$mainData = array();
 		
-		$sql = "SELECT * FROM accounting_year_master";
+		$sql = "SELECT * FROM accounting_year_master ORDER BY ac_year DESC";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -180,11 +180,15 @@
 				$ac_year = $row['ac_year']; 
 				$ac_year_name = $row['ac_year_name'];
 				$from_date = $row['from_date'];
+				$to_date = $row['to_date'];
+				$last_selected = $row['last_selected'];
 
 				$data_obj = new stdClass();
 				$data_obj->ac_year = $ac_year; 
 				$data_obj->ac_year_name = $ac_year_name;
 				$data_obj->from_date = $from_date;
+				$data_obj->to_date = $to_date;
+				$data_obj->last_selected = $last_selected;
 				array_push($mainData, $data_obj);
 			}
 		}
@@ -209,6 +213,47 @@
 		$last_selected_one = 1;
 		$sql2 = "UPDATE company SET last_selected = '" .$last_selected_one. "' WHERE login_id = '".$login_id."' AND co_id = '" .$co_id. "' ";
 		$result2 = $con->query($sql2);
+
+		$return_array['status'] = $status;
+		
+    	echo json_encode($return_array);
+	}//function end
+			
+	//Get Table Data
+	if($fn == 'updateSelectedAcYr'){
+		$return_array = array();
+		$status = true; 
+		
+		
+		$ac_year_id = $_POST['ac_year_id'];
+		
+		$last_selected_zero = 0;
+		$sql1 = "UPDATE accounting_year_master SET last_selected = '0' WHERE last_selected = '1'";
+		$result1 = $con->query($sql1);
+
+		$last_selected_one = 1;
+		$sql2 = "UPDATE accounting_year_master SET last_selected = '" .$last_selected_one. "' WHERE ac_year = '".$ac_year_id."' ";
+		$result2 = $con->query($sql2);
+
+		
+		
+		$sql = "SELECT * FROM accounting_year_master WHERE ac_year = '".$ac_year_id."' ";
+		$result = $con->query($sql);
+
+		if ($result->num_rows > 0) {
+			$row = $result->fetch_array();
+			$ac_year = $row['ac_year']; 
+			$ac_year_name = $row['ac_year_name'];
+			$from_date = $row['from_date'];
+			$to_date = $row['to_date'];
+			$last_selected = $row['last_selected'];
+
+			$_SESSION["ac_year"] = $ac_year;
+			$_SESSION["ac_year_name"] = $ac_year_name;
+			$_SESSION["from_date"] = $from_date;
+			$_SESSION["to_date"] = $to_date;
+			$_SESSION["last_selected"] = $last_selected;			
+		}
 
 		$return_array['status'] = $status;
 		

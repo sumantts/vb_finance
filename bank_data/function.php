@@ -62,10 +62,15 @@
 	//function start
 	if($fn == 'getTableData'){
 		$co_id = $_SESSION["co_id"];
+		
+		$sess_from_date = $_SESSION["from_date"];
+		$sess_to_date = $_SESSION["to_date"];		
+
 		$return_array = array();
 		$status = true;
 		$mainData = array();
-		$sql = "SELECT * FROM bank_data WHERE co_id = '" .$co_id. "' ORDER BY trans_date DESC";
+
+		$sql = "SELECT * FROM bank_data WHERE co_id = '" .$co_id. "' AND trans_date >= '" .$sess_from_date. "' AND  trans_date <= '" .$sess_to_date. "' ORDER BY trans_date DESC";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
