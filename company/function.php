@@ -162,7 +162,37 @@
     	echo json_encode($return_array);
 	}//function end
 
-	
+	//populateAcYearDD
+	if($fn == 'populateAcYearDD'){
+	    $login_id = $_SESSION['login_id'];
+		$return_array = array();
+		$status = true;
+		$mainData = array();
+		
+		$sql = "SELECT * FROM accounting_year_master";
+		$result = $con->query($sql);
+
+		if ($result->num_rows > 0) {
+			$status = true;
+			$slno = 1;
+
+			while($row = $result->fetch_array()){
+				$ac_year = $row['ac_year']; 
+				$ac_year_name = $row['ac_year_name'];
+				$from_date = $row['from_date'];
+
+				$data_obj = new stdClass();
+				$data_obj->ac_year = $ac_year; 
+				$data_obj->ac_year_name = $ac_year_name;
+				$data_obj->from_date = $from_date;
+				array_push($mainData, $data_obj);
+			}
+		}
+
+		$return_array['status'] = $status;
+		$return_array['data'] = $mainData;
+    	echo json_encode($return_array);
+	}//function end
 			
 	//Get Table Data
 	if($fn == 'updateSelectedCompany'){

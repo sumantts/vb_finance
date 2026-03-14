@@ -33,7 +33,6 @@
             $('#myForm').trigger('reset');
         }
 
-
         function populateCompanyDD(){
             $text = '';
             $.ajax({
@@ -41,6 +40,39 @@
                 url: "company/function.php",
                 dataType: "json",
                 data: { fn: "populateCompanyDD"}
+            })
+            .done(function( res ) { 
+                //console.log(JSON.stringify(res));
+                if(res.status == true){
+                    $companies = res.data;
+                    
+                    if($companies.length > 0){
+                        $sl = 1;
+                        $s_company_name = '';
+                        for($c = 0; $c < $companies.length; $c++){ 
+                            $text += '<a href="javascript:void(0);" class="dropdown-item" onClick="selectCompany(\''+$companies[$c].co_id+'\',\''+$companies[$c].company_name+'\')">';
+                                $text += '<span class="align-middle">'+$companies[$c].company_name+'</span>';
+                            $text += '</a>';
+                            $sl++;
+
+                            if($companies[$c].last_selected == '1'){
+                                $s_company_name = $companies[$c].company_name;
+                            }
+                        } 
+                        $('#company_list').html($text);
+                        $('#selected_company').html($s_company_name);
+                    }    
+                }  
+            });//end ajax 
+        }//end fun
+
+        function populateAcYearDD(){
+            $text = '';
+            $.ajax({
+                type: "POST",
+                url: "company/function.php",
+                dataType: "json",
+                data: { fn: "populateAcYearDD"}
             })
             .done(function( res ) { 
                 //console.log(JSON.stringify(res));
@@ -88,5 +120,6 @@
 
         $(document).ready(function () { 
             populateCompanyDD(); 
+            populateAcYearDD(); 
         });
     </script>
