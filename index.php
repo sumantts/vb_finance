@@ -60,6 +60,11 @@
 		include('balance_sheet/balance_sheet.php');
 		break; 
 		
+		case 'expense-tracker':
+		$title = "Expense Tracker";
+		include('expense_tracker/expense_tracker.php');
+		break; 
+		
 						
 		default:
 		include('signin/signin.php');

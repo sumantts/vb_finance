@@ -6,92 +6,92 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
 <body> 
     <style>
         .balance-sheet {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-}
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
 
-.balance-sheet th,
-.balance-sheet td {
-    border: 1px solid #e3e6ea;
-    padding: 8px 10px;
-}
+        .balance-sheet th,
+        .balance-sheet td {
+            border: 1px solid #e3e6ea;
+            padding: 8px 10px;
+        }
 
-/* Column width */
-.balance-sheet th:nth-child(1),
-.balance-sheet td:nth-child(1){
-    width:55%;
-}
+        /* Column width */
+        .balance-sheet th:nth-child(1),
+        .balance-sheet td:nth-child(1){
+            width:55%;
+        }
 
-.balance-sheet th:nth-child(2),
-.balance-sheet td:nth-child(2){
-    width:22.5%;
-    text-align:right;
-}
+        .balance-sheet th:nth-child(2),
+        .balance-sheet td:nth-child(2){
+            width:22.5%;
+            text-align:right;
+        }
 
-.balance-sheet th:nth-child(3),
-.balance-sheet td:nth-child(3){
-    width:22.5%;
-    text-align:right;
-}
+        .balance-sheet th:nth-child(3),
+        .balance-sheet td:nth-child(3){
+            width:22.5%;
+            text-align:right;
+        }
 
-/* Parent row */
-.parent-row{
-    font-weight:600;
-    background:#fafafa;
-}
+        /* Parent row */
+        .parent-row{
+            font-weight:600;
+            background:#fafafa;
+        }
 
-/* Child rows hidden initially */
-.child-row{
-    display:none;
-}
+        /* Child rows hidden initially */
+        .child-row{
+            display:none;
+        }
 
-.child-row td:first-child{
-    padding-left:35px;
-}
+        .child-row td:first-child{
+            padding-left:35px;
+        }
 
-.expand-btn{
-    width:20px;
-    height:20px;
-    border:1px solid #cfd6dc;
-    border-radius:4px;
-    background:#fff;
-    cursor:pointer;
-    position:relative;
-    display:inline-block;
-    margin-right:6px;
-}
+        .expand-btn{
+            width:20px;
+            height:20px;
+            border:1px solid #cfd6dc;
+            border-radius:4px;
+            background:#fff;
+            cursor:pointer;
+            position:relative;
+            display:inline-block;
+            margin-right:6px;
+        }
 
-/* horizontal line */
-.expand-btn::before{
-    content:"";
-    position:absolute;
-    width:10px;
-    height:2px;
-    background:#333;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-}
+        /* horizontal line */
+        .expand-btn::before{
+            content:"";
+            position:absolute;
+            width:10px;
+            height:2px;
+            background:#333;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
 
-/* vertical line */
-.expand-btn::after{
-    content:"";
-    position:absolute;
-    width:2px;
-    height:10px;
-    background:#333;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-}
+        /* vertical line */
+        .expand-btn::after{
+            content:"";
+            position:absolute;
+            width:2px;
+            height:10px;
+            background:#333;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
 
-/* minus state */
-.expand-btn.active::after{
-    display:none;
-}
+        /* minus state */
+        .expand-btn.active::after{
+            display:none;
+        }
 
     </style>
     <!-- Begin page -->

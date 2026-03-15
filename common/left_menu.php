@@ -85,22 +85,29 @@
 
                     <li class="side-nav-item <?php if($p == 'trial-balance'){?>menuitem-active<?php } ?>">
                         <a href="?p=trial-balance" class="side-nav-link">
-                            <i class="uil-money-bill-stack"></i>
+                            <i class="uil uil-balance-scale"></i>
                             <span>Trial Balance</span>
                         </a>
                     </li>                     
 
                     <li class="side-nav-item <?php if($p == 'profit-loss'){?>menuitem-active<?php } ?>">
                         <a href="?p=profit-loss" class="side-nav-link">
-                            <i class="uil-money-bill-stack"></i>
+                            <i class="uil uil-chart-growth"></i>
                             <span>Profit and Loss</span>
                         </a>
                     </li>                      
 
                     <li class="side-nav-item <?php if($p == 'balance-sheet'){?>menuitem-active<?php } ?>">
                         <a href="?p=balance-sheet" class="side-nav-link">
-                            <i class="uil-money-bill-stack"></i>
-                            <span>Balance Bheet</span>
+                            <i class="uil uil-analysis"></i>
+                            <span>Balance Sheet</span>
+                        </a>
+                    </li>                      
+
+                    <li class="side-nav-item <?php if($p == 'expense-tracker'){?>menuitem-active<?php } ?>">
+                        <a href="?p=expense-tracker" class="side-nav-link">
+                            <i class="uil uil-receipt"></i>
+                            <span>Expense Tracker</span>
                         </a>
                     </li> 
 

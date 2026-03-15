@@ -5,7 +5,7 @@
 <!-- Mirrored from coderthemes.com/hyper_2/saas/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 31 Aug 2024 16:03:16 GMT -->
 <head>
     <meta charset="utf-8" />
-    <title>Datatables | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+    <title><?=$p_name?> | <?=$title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />

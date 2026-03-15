@@ -1,7 +1,4 @@
 
-
-
-
 $('#myForm2').on('submit', function(){ 
     $from_date = $('#from_date').val(); 
     $to_date = $('#to_date').val(); 
@@ -122,6 +119,21 @@ $(document).on("click", ".expand-btn", function () {
 
 
 $(document).ready(function () { 
+    var financialYearStart = "<?=$_SESSION['from_date']?>";
+    var financialYearEnd   = "<?=$_SESSION['to_date']?>";
+
+    $("#from_date").datepicker({
+        dateFormat: "dd-mm-yy",
+        minDate: new Date(financialYearStart),
+        maxDate: new Date(financialYearEnd)
+    });
+
+    $("#to_date").datepicker({
+        dateFormat: "dd-mm-yy",
+        minDate: new Date(financialYearStart),
+        maxDate: new Date(financialYearEnd)
+    });
+
     populateDataTable();
     configureParentCategoryDd();
     configureParentCategoryDd1();
