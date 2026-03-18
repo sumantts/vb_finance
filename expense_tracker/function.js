@@ -42,8 +42,8 @@ $('#myForm1').on('submit', function(){
     })
     .done(function( res ) {
         //$res1 = JSON.parse(res);
-        if(res.status == true){    
-            $('#myForm1').trigger('reset');
+        if(res.status == true){   
+            $("#myForm1")[0].reset(); 
             $('#theme-settings-offcanvas').offcanvas('hide'); 
             alert(res.error_message);
             populateDataTable();
@@ -107,6 +107,9 @@ function editTabledata(sl){
             setTimeout(function(){
                 $('#sub_c_id').val($sub_c_id).trigger('change');
             },300);
+            $('#narration').val($res1.narration);
+            $('#exp_amount').val($res1.exp_amount);
+            $('#exp_date').val($res1.exp_date); 
              
         }        
     });//end ajax
@@ -173,8 +176,12 @@ $('#parent_c_id').on('change', function(){
 });
 
 
-$('#cancelForm1').on('click', function(){
-    $('#myForm1').trigger('reset');
+$('#cancelForm1').on('click', function(){ 
+    $("#myForm1")[0].reset(); 
+})
+
+$('#offcanvas').on('click', function(){
+    $("#myForm1")[0].reset();  
 })
 
 // Check All function

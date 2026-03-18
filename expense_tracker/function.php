@@ -139,51 +139,28 @@
 	if($fn == 'editTabledata'){
 		$return_array = array();
 		$status = true; 
-		$serial_no = $_POST['serial_no'];  
-
-		$b_id = ''; 
-		$trans_date = ''; 
-		$narration = ''; 
-		$chq_ref_no = ''; 
-		$value_date = ''; 
-		$withdrawal_amount = ''; 
-		$deposit_amount = ''; 
-		$parent_c_id = ''; 
-		$sub_c_id = '';
+		$serial_no = $_POST['serial_no'];  		
 		
-		
-		$sql = "SELECT * FROM bank_data WHERE b_id = '" .$serial_no. "' ";
+		$sql = "SELECT * FROM expense_tracker WHERE exp_id = '" .$serial_no. "' ";
 		$result = $con->query($sql);
 
 		if ($result->num_rows > 0) {
 			$status = true;
-			$slno = 1;
-
 			while($row = $result->fetch_array()){
-				$b_id = $row['b_id'];   
-				$trans_date = $row['trans_date'];   
-				$narration = $row['narration'];   
-				$chq_ref_no = $row['chq_ref_no'];   
-				$value_date = $row['value_date'];   
-				$withdrawal_amount = $row['withdrawal_amount'];      
-				$deposit_amount = $row['deposit_amount'];      
-				$parent_c_id = $row['parent_c_id'];      
-				$sub_c_id = $row['sub_c_id'];   
+				$return_array['exp_id'] = $row['exp_id']; 
+				$return_array['login_id'] = $row['login_id']; 
+				$return_array['co_id'] = $row['co_id'];  
+				$return_array['parent_c_id'] = $row['parent_c_id']; 
+				$return_array['sub_c_id'] = $row['sub_c_id'];  
+				$return_array['narration'] = $row['narration']; 
+				$return_array['exp_amount'] = $row['exp_amount'];  
+				$return_array['exp_date'] = $row['exp_date'];				
 			}
 		}
 
 		$return_array['status'] = $status; 
 		$return_array['serial_no'] = $serial_no;
-
-		$return_array['trans_date'] = $trans_date;
-		$return_array['narration'] = $narration;
-		$return_array['chq_ref_no'] = $chq_ref_no;
-		$return_array['value_date'] = $value_date;
-		$return_array['withdrawal_amount'] = $withdrawal_amount;
-		$return_array['deposit_amount'] = $deposit_amount;
-		$return_array['parent_c_id'] = $parent_c_id;
-		$return_array['sub_c_id'] = $sub_c_id;
-		
+				
     	echo json_encode($return_array);
 	}//function end		 
 

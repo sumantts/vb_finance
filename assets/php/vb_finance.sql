@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2026 at 09:26 PM
+-- Generation Time: Mar 18, 2026 at 05:03 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `vb_finance`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounting_year_master`
+--
+
+CREATE TABLE `accounting_year_master` (
+  `ac_year` int(2) NOT NULL,
+  `ac_year_name` varchar(255) NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `last_selected` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `accounting_year_master`
+--
+
+INSERT INTO `accounting_year_master` (`ac_year`, `ac_year_name`, `from_date`, `to_date`, `last_selected`) VALUES
+(1, '2023-2024', '2023-04-01', '2024-03-31', 0),
+(2, '2024-2025', '2024-04-01', '2025-03-31', 0),
+(3, '2025-2026', '2025-04-01', '2026-03-31', 1);
 
 -- --------------------------------------------------------
 
@@ -129,6 +152,31 @@ INSERT INTO `company` (`co_id`, `login_id`, `company_name`, `last_selected`, `cr
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `expense_tracker`
+--
+
+CREATE TABLE `expense_tracker` (
+  `exp_id` int(11) NOT NULL,
+  `login_id` int(11) NOT NULL COMMENT 'PK of login',
+  `co_id` int(11) NOT NULL COMMENT 'PK of company table',
+  `parent_c_id` int(11) NOT NULL COMMENT 'from category',
+  `sub_c_id` int(11) NOT NULL COMMENT 'from category',
+  `narration` text NOT NULL,
+  `exp_amount` decimal(10,2) NOT NULL,
+  `exp_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `expense_tracker`
+--
+
+INSERT INTO `expense_tracker` (`exp_id`, `login_id`, `co_id`, `parent_c_id`, `sub_c_id`, `narration`, `exp_amount`, `exp_date`) VALUES
+(1, 1, 2, 1, 2, 'Office Tiffin Expense', 150.50, '2026-03-18'),
+(2, 1, 2, 1, 4, 'Internet bill', 750.50, '2026-03-10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -195,6 +243,12 @@ INSERT INTO `sales_data` (`sa_id`, `co_id`, `client_name`, `address`, `state`, `
 --
 
 --
+-- Indexes for table `accounting_year_master`
+--
+ALTER TABLE `accounting_year_master`
+  ADD PRIMARY KEY (`ac_year`);
+
+--
 -- Indexes for table `bank_data`
 --
 ALTER TABLE `bank_data`
@@ -213,6 +267,12 @@ ALTER TABLE `company`
   ADD PRIMARY KEY (`co_id`);
 
 --
+-- Indexes for table `expense_tracker`
+--
+ALTER TABLE `expense_tracker`
+  ADD PRIMARY KEY (`exp_id`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -227,6 +287,12 @@ ALTER TABLE `sales_data`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `accounting_year_master`
+--
+ALTER TABLE `accounting_year_master`
+  MODIFY `ac_year` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `bank_data`
@@ -245,6 +311,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `company`
   MODIFY `co_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `expense_tracker`
+--
+ALTER TABLE `expense_tracker`
+  MODIFY `exp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `login`
