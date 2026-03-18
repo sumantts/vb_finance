@@ -21,6 +21,7 @@ $('#myForm2').on('submit', function(){
 
             if(($all_categories.length) > 0 && (parseFloat($total_debit_balance) > 0 || parseFloat($total_credit_balance) > 0)){
                 for($i = 0; $i < $all_categories.length; $i++){
+                    $c_id = $all_categories[$i].c_id;
                     $c_credit_balance = $all_categories[$i].credit_balance;
                     $c_debit_balance = $all_categories[$i].debit_balance; 
                     $category_name = $all_categories[$i].category_name;  
@@ -51,13 +52,14 @@ $('#myForm2').on('submit', function(){
                         //sub categories  
                         if($sub_categories.length > 0){
                             for($j = 0; $j < $sub_categories.length; $j++){
+                                $sub_c_id = $sub_categories[$j].sub_c_id;
                                 $sub_category_name = $sub_categories[$j].sub_category_name;
                                 $sub_c_debit_balance = $sub_categories[$j].debit_balance;
                                 $sub_c_credit_balance = $sub_categories[$j].credit_balance;
                                 
                                 if(parseFloat($sub_c_debit_balance) > 0 || parseFloat($sub_c_credit_balance) > 0){                                    
                                     $table_body += '<tr class="child-row">';
-                                        $table_body += '<td>'+$sub_category_name+'</td>';
+                                        $table_body += '<td>'+$sub_category_name+' <a href="javascript: void(0);" onClick="viewDetailsTrans('+$c_id+', '+$sub_c_id+')"><i class="ri-external-link-line" ></i></a></td>';
                                         
                                         if(parseFloat($sub_c_debit_balance) > 0){
                                             $table_body += '<td>'+$sub_c_debit_balance.toFixed(2)+'</td>';

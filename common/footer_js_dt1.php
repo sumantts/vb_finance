@@ -1,4 +1,49 @@
 
+    <!-- Fullscreen Modal -->
+     <style>
+        .amount{
+        text-align:right;
+        font-weight:500;
+        }
+     </style>
+    <div class="modal fade" id="scrollable-modal" tabindex="-1" aria-labelledby="scrollable-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scrollable-modalLabel">Transactin Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm table-centered mb-0">
+                    <thead>
+                        <tr>
+                            <th>SL#</th>
+                            <th>Date</th>
+                            <th>trans_date</th>
+                            <th class="amount">Withdrawal Amt.</th>
+                            <th class="amount">Deposit Amt.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trans_details">
+                        <!-- <tr>
+                            <td>ASOS Ridley High Waist</td>
+                            <td>$79.49</td>
+                            <td><span class="badge bg-primary">82 Pcs</span></td>
+                            <td>$6,518.18</td>
+                        </tr> -->
+                    </tbody>
+                </table>    
+                
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:void(0);" class="btn btn-light" data-bs-dismiss="modal">Close</a>
+                    <!-- <button type="button" class="btn btn-primary">Save Changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Vendor js -->
     <script src="assets/js/vendor.min.js"></script>
@@ -130,6 +175,54 @@
                 }  
             });//end ajax 
         }//end fun
+
+        // View Transaction Details
+        function viewDetailsTrans(c_id, sub_c_id){
+            console.log('c_id: ' + c_id + ' sub_c_id: ' + sub_c_id);                      
+            $.ajax({
+                type: "POST",
+                url: "trial_balance/function.php",
+                dataType: "json",
+                data: { fn: "viewDetailsTrans", category_id: c_id, sub_category_id: sub_c_id}
+            })
+            .done(function( res ) { 
+                if(res.status == true){
+                    $transactions = res.transactions;
+                    if($transactions.length > 0){
+                        $('#scrollable-modal').modal('show'); 
+                        
+                        $("#trans_details").html(''); 
+                        $tr_txt = '';
+                        $sl = 1;
+                        $total_depo = 0;
+                        $total_wid = 0;
+                        for($t = 0; $t < $transactions.length; $t++){
+                            $tr_txt += '<tr>';
+                                $tr_txt += '<td>'+$sl+'</td>';                                 
+                                $tr_txt += '<td>'+$transactions[$t].trans_date+'</td>';
+                                $tr_txt += '<td>'+$transactions[$t].narration+'</td>';
+                                $tr_txt += '<td class="amount">'+$transactions[$t].withdrawal_amount+'</td>';
+                                $tr_txt += '<td class="amount">'+$transactions[$t].deposit_amount+'</td>';
+                            $tr_txt += '</tr>';
+                            $sl++;
+                            $total_depo = parseFloat($total_depo) + parseFloat($transactions[$t].deposit_amount);
+                            $total_wid = parseFloat($total_wid) + parseFloat($transactions[$t].withdrawal_amount);
+                        }
+
+                        $tr_txt += '<tr>';
+                            $tr_txt += '<td colspan="3">Total</td>';
+                            $tr_txt += '<td class="amount">'+$total_wid.toFixed(2)+'</td>';
+                            $tr_txt += '<td class="amount">'+$total_depo.toFixed(2)+'</td>';
+                        $tr_txt += '</tr>';
+                        $("#trans_details").html($tr_txt);
+                    }else{
+                        alert('Sorry! No transaction available');
+                    }
+                }else{
+                    alert('Sorry! No transaction available');
+                }
+            });//end ajax 
+        }//end 
 
         $(document).ready(function () { 
             populateCompanyDD(); 

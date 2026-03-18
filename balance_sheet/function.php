@@ -20,6 +20,8 @@
 		$from_date = date('Y-m-d', strtotime($_POST['from_date'])); 
 		$to_date = date('Y-m-d', strtotime($_POST['to_date']));
 		$co_id = $_SESSION["co_id"];
+		$sess_from_date = $_SESSION["from_date"];
+		$sess_to_date = $_SESSION["to_date"];
 
 		$all_categories = array();
 
@@ -90,7 +92,7 @@
 
 						// Get Transaction
 						$sub_c_sub_total = 0;
-						$sql3 = "SELECT * FROM bank_data WHERE co_id = '" .$co_id. "' AND parent_c_id = '" .$c_id. "' AND sub_c_id = '" .$sub_c_id. "' AND trans_date >= '" .$from_date. "' AND trans_date <= '" .$to_date. "' ORDER BY trans_date DESC";
+						$sql3 = "SELECT * FROM bank_data WHERE co_id = '" .$co_id. "' AND parent_c_id = '" .$c_id. "' AND sub_c_id = '" .$sub_c_id. "' AND trans_date >= '" .$from_date. "' AND trans_date <= '" .$to_date. "' AND trans_date >= '" .$sess_from_date. "' AND trans_date <= '" .$sess_to_date. "' ORDER BY trans_date DESC";
 						$result3 = $con->query($sql3);
 
 						if ($result3->num_rows > 0) {

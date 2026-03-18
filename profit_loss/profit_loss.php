@@ -7,100 +7,100 @@ if(!$_SESSION['login_id'] || $_SESSION['login_id'] == ''){header("location: ?p=s
     <style>
         
 
-.balance-container{
-display:flex;
-gap:20px;
-}
+    .balance-container{
+    display:flex;
+    gap:20px;
+    }
 
-.balance-column{
-width:50%;
-}
+    .balance-column{
+    width:50%;
+    }
 
-.balance-table{
-width:100%;
-border-collapse:collapse;
-table-layout:fixed;
-background:white;
-}
+    .balance-table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    background:white;
+    }
 
-.balance-table th{
-background:#f1f3f6;
-border:1px solid #dcdcdc;
-padding:8px;
-font-weight:600;
-text-align:left;
-}
+    .balance-table th{
+    background:#f1f3f6;
+    border:1px solid #dcdcdc;
+    padding:8px;
+    font-weight:600;
+    text-align:left;
+    }
 
-.balance-table td{
-border:1px solid #e4e6eb;
-padding:8px;
-}
+    .balance-table td{
+    border:1px solid #e4e6eb;
+    padding:8px;
+    }
 
-.amount{
-text-align:right;
-font-weight:500;
-}
+    .amount{
+    text-align:right;
+    font-weight:500;
+    }
 
-.parent-row{
-font-weight:600;
-background:#fafafa;
-}
+    .parent-row{
+    font-weight:600;
+    background:#fafafa;
+    }
 
-/* child rows hidden initially */
-.child-row{
-display:none;
-}
+    /* child rows hidden initially */
+    .child-row{
+    display:none;
+    }
 
-.child-row td:first-child{
-padding-left:35px;
-}
+    .child-row td:first-child{
+    padding-left:35px;
+    }
 
-.balance-table tbody tr:hover{
-background:#f7f9fc;
-}
+    .balance-table tbody tr:hover{
+    background:#f7f9fc;
+    }
 
-/* Expand Button */
+    /* Expand Button */
 
-.expand-btn{
-width:18px;
-height:18px;
-border:1px solid #cfd6dc;
-border-radius:4px;
-background:white;
-display:inline-block;
-position:relative;
-margin-right:6px;
-cursor:pointer;
-}
+    .expand-btn{
+    width:18px;
+    height:18px;
+    border:1px solid #cfd6dc;
+    border-radius:4px;
+    background:white;
+    display:inline-block;
+    position:relative;
+    margin-right:6px;
+    cursor:pointer;
+    }
 
-/* horizontal */
-.expand-btn::before{
-content:"";
-position:absolute;
-width:10px;
-height:2px;
-background:#333;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-}
+    /* horizontal */
+    .expand-btn::before{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:2px;
+    background:#333;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    }
 
-/* vertical */
-.expand-btn::after{
-content:"";
-position:absolute;
-width:2px;
-height:10px;
-background:#333;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-}
+    /* vertical */
+    .expand-btn::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:10px;
+    background:#333;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    }
 
-/* minus */
-.expand-btn.active::after{
-display:none;
-}
+    /* minus */
+    .expand-btn.active::after{
+    display:none;
+    }
 
     
     </style>
